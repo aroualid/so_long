@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 17:14:21 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:16:14 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	extension(char *av2)
 {
 	int	i;
-	int	j;
 
 	i = ft_strlen(av2);
-	j = 0;
 	if (i > 4)
 	{
 		if (ft_strncmp(av2 + i - 4, ".ber", 4) != 0)
@@ -38,9 +36,6 @@ int	extension(char *av2)
 
 int	check_file(char *av2)
 {
-	int i;
-
-	i = 0;
 	if (extension (av2) == 1)
 	{
 		if (open(av2, O_RDONLY) != -1)
@@ -58,10 +53,11 @@ int	main(int ac, char **av)
 	{
 		if (check_file (av[1]) == 0)
 			printf ("ERROR\n");
-		else if (check_file (av[1]) == 1)
+		else if (check_file (av[1]) == 1 
+				&& get_len_line(av[1]) == 1 
+				&& count_element(av[1]) == 1)
 		{
 			printf ("SUCCESS\n");
-			get_len_line(av[1]);
 		}
 	}
 	else

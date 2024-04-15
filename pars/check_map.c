@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 18:42:46 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:13:49 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char **get_each_line(char *file)
 	while (j < i)
 	{
 		ptr[j] = str;
-		printf ("%s",ptr[j]);
+		//printf ("%s",ptr[j]);
 		str = get_next_line(infile);
 		j++;
 
