@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   check_finish.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:53:38 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 17:49:27 by aroualid         ###   ########.fr       */
+/*   Created: 2024/04/15 18:43:03 by aroualid          #+#    #+#             */
+/*   Updated: 2024/04/15 18:57:29 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long_pars.h"
 
-size_t	ft_strlen(const char *s)
+int	count_element(char *file)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+		
+}		

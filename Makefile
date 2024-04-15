@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/04/12 17:36:44 by aroualid         ###   ########.fr        #
+#    Updated: 2024/04/13 17:13:46 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIGHT_PURPLE=\033[1;35m
 
 CC = cc
 CFLAGS=  -Wall -Wextra -Werror  -g3
-LIBFT_PATH = libft/
+LIBFT_PATH = libft
 MINILIBX_PATH = minilibx-linux
 SRCS_PATH = src/
 NAME = so_long
@@ -34,7 +34,9 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 )
 OBJS = $(SRCS:%.c=%.o)
 
-all: $(NAME) 
+.PHONY: all clean fclean re libft
+
+all:$(NAME) 
 #	@echo "$(LIGHT_CYAN)Starting tasks..."
 #	@i=0; while [ $$i -le 100 ]; do \
        # echo -n "Progress: [$$i%] "; \
@@ -47,8 +49,8 @@ all: $(NAME)
     #done
 	#@echo "$(LIGHT_MAGENTA)All tasks completed !                                                                "
 
-$(NAME): $(OBJS) minilibx libft
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)  -L$(LIBFT_PATH) -Lminilibx-linux -lmlx_Linux -lmlx -lX11 -lXext -lm
+$(NAME): $(OBJS) libft minilibx
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -Llibft -lft -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
 
 libft:
 	$(MAKE) -C $(LIBFT_PATH)

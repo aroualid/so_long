@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   so_long_pars.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:53:38 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 17:49:27 by aroualid         ###   ########.fr       */
+/*   Created: 2024/04/15 13:35:56 by aroualid          #+#    #+#             */
+/*   Updated: 2024/04/15 17:10:42 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SO_LONG_PARS_H
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
+# define SO_LONG_PARS_H
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+# include "../libft/libft.h"
+# include <math.h>
+# include <limits.h>
+# include <stdbool.h>
+# include <stdint.h>
+# include <fcntl.h>
+# include "get_next_line.h"
+
+char	**get_each_line(char *file);
+int		get_line(char *file);
+int		get_len_line(char *file);
+
+#endif
