@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/16 02:53:04 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:19:28 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	main(int ac, char **av)
 		{
 			printf ("SUCCESS\n");
 		}
+		else
+			printf("ERROR3\n");
 	}
 	else
 		printf ("ERROR2\n");
