@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 22:39:07 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/16 02:47:24 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ int	count_element(char *file)
 	c = count_c(file);
 	e = count_e(file);
 	p = count_p(file);
-	if (c >= 1 && e == 1 && p == 1)
+	if (c >= 1 && e == 1 && p == 1 && (first_last_wall(file) == 1) && (check_first_last_coll(file) == 1) 
+		&& check_good_carac(file) == 1)
 	{
 		printf("OUI\n");
 		return (1);

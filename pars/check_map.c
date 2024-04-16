@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 22:13:49 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/16 02:52:22 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ int	get_len_line(char *file)
 		else
 			return (0);
 	}
-	return (1);
+	return (j);
 }
