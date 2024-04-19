@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/16 18:19:28 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/19 12:02:51 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ int	check_file(char *av2)
 
 int	main(int ac, char **av)
 {
+	t_game	game;
 	if (ac == 2)
 	{
 		if (check_file (av[1]) == 0)
 			printf ("ERROR\n");
 		else if (check_file (av[1]) == 1 
-				&& get_len_line(av[1]) != 0 
-				&& count_element(av[1]) == 1)
+				&& get_len_line(av[1], &game) != 0 
+				&& count_element(av[1], &game) == 1)
 		{
 			printf ("SUCCESS\n");
 		}

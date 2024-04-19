@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/15 13:39:11 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:10:31 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdint.h>
-# include "../pars/so_long_pars.h"
 
 typedef struct s_game
 {
@@ -57,6 +56,10 @@ typedef struct s_game
 	t_img				*screen;
 	t_img				**sprites;
 	t_img				*test;
+	int					pp_x;
+	int					pp_y;
+	int					map_x;
+	int					map_y;
 }						t_game;
 
 #endif
