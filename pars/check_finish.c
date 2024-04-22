@@ -6,23 +6,21 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:43:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/22 14:53:24 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:34:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
 
-int	first_last_wall(char *file, t_game *game)
+int	first_last_wall(char **ptr, t_game *game)
 {
-	char	**ptr;
 	int		i;
 	char	*first;
 	char	*last;
 
 	i = 0;
-	ptr = get_each_line(file, game);
 	first = ptr[0];
-	last = ptr[game->max_x - 1];
+	last = ptr[game->max_y - 1];
 	while (first[i] != '\n')
 	{
 		if (first[i] == '1')
@@ -41,14 +39,12 @@ int	first_last_wall(char *file, t_game *game)
 	return (1);
 }
 
-int	check_first_last_coll(char *file, t_game *game)
+int	check_first_last_coll(char **ptr, t_game *game)
 {
-	char	**ptr;
 	int		i;
 	char	*str;
 
 	i = 0;
-	ptr = get_each_line(file, game);
 	while (i < game->max_y)
 	{
 		str = ptr[i];
@@ -60,16 +56,14 @@ int	check_first_last_coll(char *file, t_game *game)
 	return (1);
 }
 
-int	check_good_carac(char *file, t_game *game)
+int	check_good_carac(char **ptr, t_game *game)
 {
-	char	**ptr;
 	int		i;
 	char	*str;
 	int		j;
 
 	j = 0;
 	i = 0;
-	ptr = get_each_line(file, game);
 	while (i < game->max_y)
 	{
 		str = ptr[i];
