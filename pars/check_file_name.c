@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 12:02:51 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:53:40 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,15 @@ int	main(int ac, char **av)
 				&& get_len_line(av[1], &game) != 0 
 				&& count_element(av[1], &game) == 1)
 		{
-			printf ("SUCCESS\n");
+			printf("px = %i\n", game.pp_x);
+			printf("py = %i\n", game.pp_y);
+			printf("max x = %i\n", game.max_x);
+			printf("max y = %i\n", game.max_y);	
+			flood_fill(&game, game.pp_x, game.pp_y, av[1]);
+			for(int i = 0; i < game.max_y; i++)
+			{
+				printf("%s", game.map[i]);
+			}
 		}
 		else
 			printf("ERROR3\n");

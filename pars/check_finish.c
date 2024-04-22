@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:43:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 16:10:59 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:53:24 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	first_last_wall(char *file, t_game *game)
 	i = 0;
 	ptr = get_each_line(file, game);
 	first = ptr[0];
-	last = ptr[get_line(file) - 1];
+	last = ptr[game->max_x - 1];
 	while (first[i] != '\n')
 	{
 		if (first[i] == '1')
@@ -49,10 +49,10 @@ int	check_first_last_coll(char *file, t_game *game)
 
 	i = 0;
 	ptr = get_each_line(file, game);
-	while (i < get_line(file))
+	while (i < game->max_y)
 	{
 		str = ptr[i];
-		if (str[0] == '1' && str[get_len_line(file, game) - 1] == '1')
+		if (str[0] == '1' && str[game->max_x - 1] == '1')
 			i++;
 		else
 			return (0);
@@ -70,10 +70,10 @@ int	check_good_carac(char *file, t_game *game)
 	j = 0;
 	i = 0;
 	ptr = get_each_line(file, game);
-	while (i < get_line(file))
+	while (i < game->max_y)
 	{
 		str = ptr[i];
-		while (j != get_len_line(file, game) - 1)
+		while (j != game->max_x - 1)
 		{
 			if ((str[j] == '1') || (str[j] == '0') || (str[j] == 'P') ||
 				(str[j] == 'C') || (str[j] == 'E'))
@@ -89,17 +89,16 @@ int	check_good_carac(char *file, t_game *game)
 	return (1);
 }
 
-int    flood_fill(t_game *map, int x, int y)
+int	flood_fill(t_game *game, int x, int y, char *file)
 {
-    if (x < 0 || x > map->map_x || y < 0 || y > map->map_y)
-        return (1);
-    if (map->map[y][x] == '1' || map->map[y][x] == 'c')
-        return (1);
-    else
-        map->map[y][x] = 'c';
-    flood_fill(map, x + 1, y);
-    flood_fill(map, x - 1, y);
-    flood_fill(map, x, y + 1);
-    flood_fill(map, x, y - 1);
-    return (0);
+    if (x < 0 || x >= game->max_x  || y < 0 || y >= game->max_y )
+        return (0);
+    if (game->map[y][x] == '1' || game->map[y][x] == 'X')
+		return (0);
+	game->map[y][x] = 'X';
+    flood_fill(game, x + 1, y, file);
+    flood_fill(game, x - 1, y, file);
+    flood_fill(game, x, y + 1, file);
+    flood_fill(game, x, y - 1, file);
+    return (1);
 }

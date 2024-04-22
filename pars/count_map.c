@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 15:42:11 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:51:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	count_c(char *file, t_game *game)
 	c = 0;
 	i = 0;
 	ptr = get_each_line(file, game);
-	while(i < get_line(file))
+	while(i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')
@@ -51,7 +51,7 @@ int	count_e(char *file, t_game *game)
 	e = 0;
 	i = 0;
 	ptr = get_each_line(file, game);
-	while(i < get_line(file))
+	while(i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')
@@ -78,7 +78,7 @@ int	count_p(char *file, t_game *game)
 	p = 0;
 	i = 0;
 	ptr = get_each_line(file, game);
-	while(i < get_line(file))
+	while(i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')

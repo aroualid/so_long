@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 16:10:31 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:44:25 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_game
 	t_img				*test;
 	int					pp_x;
 	int					pp_y;
-	int					map_x;
-	int					map_y;
+	int					max_x;
+	int					max_y;
 }						t_game;
 
 #endif

@@ -6,13 +6,30 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 13:07:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:50:26 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
 
-int	get_line(char *file)
+
+void	ft_free(char **tav)
+{
+	int	i;
+
+	i = 0;
+	if (tav != NULL)
+	{
+		while (tav[i] != NULL)
+		{
+			free(tav[i]);
+			i++;
+		}
+		free(tav);
+	}
+}
+
+int	get_line(char *file, t_game *game)
 {
 	char *str;
 	int	infile;
@@ -28,6 +45,7 @@ int	get_line(char *file)
 		str = get_next_line(infile);
 	}
 	close (infile);
+	game->max_y = i;
 	return (i);
 }
 
@@ -42,13 +60,13 @@ char **get_each_line(char *file, t_game *game)
 	infile = open(file, O_RDONLY);
 	str = get_next_line(infile);
 	j = 0;
-	i = get_line(file);
+	i = game->max_y;
 	ptr = ft_calloc(sizeof(char**), i);
 	game->map = ft_calloc(sizeof(char**), i);
 	while (j < i)
 	{
-		ptr[j] = str;
-		game->map[j] = str;
+		ptr[j] = ft_strdup(str);
+		game->map[j] = ft_strdup(str);
 		//printf ("%s",ptr[j]);
 		str = get_next_line(infile);
 		j++;
@@ -69,7 +87,7 @@ int	get_len_line(char *file, t_game *game)
 
 	first_res = 0;
 	res = 0;
-	i = get_line(file);
+	i = get_line(file, game);
 	ptr = get_each_line(file, game);
 	first_res = ft_strlen(ptr[0]) - 1;
 	j = 1;
@@ -81,5 +99,6 @@ int	get_len_line(char *file, t_game *game)
 		else
 			return (0);
 	}
-	return (res);
+	game->max_x = res;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:35:56 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/19 12:03:09 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:46:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # include "../includes/so_long.h"
 
 char	**get_each_line(char *file, t_game *game);
-int		get_line(char *file);
+int		get_line(char *file, t_game *game);
 int		get_len_line(char *file, t_game *game);
 int		count_element(char *file, t_game *game);
 int		first_last_wall(char *file, t_game *game);
 int		check_first_last_coll(char *file, t_game *game);
 int		check_good_carac(char *file, t_game *game);
-
-
+int		flood_fill(t_game *game, int x, int y, char *file);
+void	ft_free(char **tav);
 #endif
