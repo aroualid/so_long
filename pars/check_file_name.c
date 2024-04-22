@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/22 15:36:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:43:16 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_file(char *av2)
 {
 	if (extension (av2) == 1)
 	{
-		if (open(av2, O_RDONLY) != -1)
+		if ((open(av2, O_RDONLY) != -1) && (open(av2, O_DIRECTORY) == -1)) 
 			return (1);
 		else
 			return (0);
