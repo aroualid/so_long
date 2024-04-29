@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 11:45:12 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:15:58 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	count_c(char **ptr, t_game *game)
 	j = 0;
 	c = 0;
 	i = 0;
-	while(i < game->max_y)
+	while (i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')
 		{
-			if (str[j] ==  'C')
+			if (str[j] == 'C')
 				c++;
 			j++;
 		}
@@ -47,12 +47,12 @@ int	count_e(char **ptr, t_game *game)
 	j = 0;
 	e = 0;
 	i = 0;
-	while(i < game->max_y)
+	while (i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')
 		{
-			if (str[j] ==  'E')
+			if (str[j] == 'E')
 				e++;
 			j++;
 		}
@@ -72,12 +72,12 @@ int	count_p(char **ptr, t_game *game)
 	j = 0;
 	p = 0;
 	i = 0;
-	while(i < game->max_y)
+	while (i < game->max_y)
 	{
 		str = ptr[i];
 		while (str[j] != '\n')
 		{
-			if (str[j] ==  'P')
+			if (str[j] == 'P')
 			{
 				p++;
 				game->pp_x = j;
@@ -91,10 +91,9 @@ int	count_p(char **ptr, t_game *game)
 	return (p);
 }
 
-
 int	count_element(char **file, t_game *game)
 {
-	int c;
+	int	c;
 	int	e;
 	int	p;
 
@@ -102,7 +101,7 @@ int	count_element(char **file, t_game *game)
 	e = count_e(file, game);
 	p = count_p(file, game);
 	if (c >= 1 && e == 1 && p == 1
-		&&(first_last_wall(file, game) == 1)
+		&& (first_last_wall(file, game) == 1)
 		&& (check_first_last_coll(file, game) == 1)
 		&& check_good_carac(file, game) == 1)
 		return (1);
@@ -112,7 +111,7 @@ int	count_element(char **file, t_game *game)
 
 int	count_element_ff(char **file, t_game *game)
 {
-	int c;
+	int	c;
 	int	e;
 	int	p;
 
@@ -120,7 +119,7 @@ int	count_element_ff(char **file, t_game *game)
 	e = count_e(file, game);
 	p = count_p(file, game);
 	if (c >= 1 || e == 1 || p == 1)
-		return(0);
+		return (0);
 	else
-		return(1);
+		return (1);
 }
