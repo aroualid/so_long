@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 11:21:27 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:58:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ typedef struct s_game
 	t_img				*screen;
 	t_img				**sprites;
 	t_img				*test;
+	int					sprite_index;
 	int					pp_x;
 	int					pp_y;
 	int					max_x;
 	int					max_y;
+	unsigned long		nb_frames;
 }						t_game;
 
 #endif

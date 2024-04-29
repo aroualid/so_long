@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 17:01:28 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:52:19 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ void	draw_sprite(t_game *game, t_img *img, int x, int y)
 	unsigned int	color;
 
 	i = 0;
-	while (i < img->width * 5)
+	while (i < img->width)
 	{
 		j = -1;
-		while (++j < img->height * 5)
+		while (++j < img->height)
 		{
 			if (j + y  < 0 || j + y >= 1080
 				|| i + x < 0 || i + x >= 1920)
 				continue ;
 			color = ((int *)img->data)[(int)
-				(j / 5) *img->width + (int)(i / 5 )];
+				(j ) *img->width + (int)(i )];
 			if (color == 0xFF000000)
 				continue ;
 			((int *)game->screen->data)[(y + j )
@@ -96,27 +96,11 @@ void	detect_key(t_game *game)
 		close_game(game);
 }
 
-void	clear_sprites(t_game *game)
-{
-	int	i = 0;
-	while (i < game->screen->width * game->screen->height)
-	{
-		((int *) game->screen->data)[i] = 0;
-		i++;
-	}
-}
 int	update(t_game *game)
 {
-	game->nb_frames++;
-	clear_sprites(game);
 	detect_key(game);
-	draw_sprite(game, game->sprites[game->sprite_index], 1000 , 500);
+	draw_sprite(game->mlx,game->test, 500 , 500);
 	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
-	if (game->nb_frames % 32 == 0)
-	{
-		game->sprite_index++;
-		game->sprite_index = game->sprite_index%6;
-	}
 	return (0);
 }
 
@@ -133,36 +117,18 @@ int	init_mlx_settings(t_game *game)
 	return (0);
 }
 
-t_img	**load_loop(t_game *game)
-{
-	t_img	**ptr;
-
-	ptr = malloc(sizeof(t_img*) * 6);
-	ptr[0] = load_sprite(game->mlx, "textures/duck_1.xpm");
-	ptr[1] = load_sprite(game->mlx, "textures/duck_2.xpm");
-	ptr[2] = load_sprite(game->mlx, "textures/duck_3.xpm");
-	ptr[3] = load_sprite(game->mlx, "textures/duck_4.xpm");
-	ptr[4] = load_sprite(game->mlx, "textures/duck_5.xpm");
-	ptr[5] = load_sprite(game->mlx, "textures/duck_6.xpm");
-
-	game->sprites = ptr;
-	return (ptr);
-}
-
 int	main(int ac, char **av)
 {
 	t_game		game;
-	int			i;
 	if (pars(ac, av) != 0)
 	{
-		i = 0;
 		game = (t_game){0};
 		init_mlx_settings(&game);
-		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
-		//if (!game.test)
-		//	printf("AIRORE\n");
-		
-		load_loop(&game);
+		game.test = load_sprite(game.mlx, "textures/frame.xpm");
+		if (!game.test)
+			return (printf("AIRORE\n"));
+		else
+			printf("%p\n", game.test);
 		mlx_loop_hook(game.mlx, update, &game);
 		mlx_hook(game.win, KeyPress, KeyPressMask, key_pressed, &game);
 		mlx_hook(game.win, KeyRelease, KeyReleaseMask, key_released, &game);
