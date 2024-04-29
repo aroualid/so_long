@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:43:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/22 15:34:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:44:35 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	check_good_carac(char **ptr, t_game *game)
 		i++;
 
 	}
-	printf ("YOUPI\n");
 	return (1);
 }
 

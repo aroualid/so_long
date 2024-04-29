@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 11:21:16 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:44:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,4 @@ int	main(int ac, char **av)
 		mlx_hook(game.win, DestroyNotify, 0, close_game, &game);
 		mlx_loop(game.mlx);
 	}
-	else
-		return (pars(ac, av));
 }

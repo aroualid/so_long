@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/22 15:32:12 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:45:12 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,9 @@ int	count_element(char **file, t_game *game)
 		&&(first_last_wall(file, game) == 1)
 		&& (check_first_last_coll(file, game) == 1)
 		&& check_good_carac(file, game) == 1)
-	{
-		printf("OUI\n");
 		return (1);
-	}
 	else
-	{
-		printf("NON\n");
 		return (0);
-	}
 }
 
 int	count_element_ff(char **file, t_game *game)

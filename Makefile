@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/04/29 11:04:20 by aroualid         ###   ########.fr        #
+#    Updated: 2024/04/29 11:43:02 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,24 +25,27 @@ LIGHT_PURPLE=\033[1;35m
 CC = cc
 CFLAGS=  -Wall -Wextra -Werror  -g3
 LIBFT_PATH = libft
+FT_PRINTF_PATH = ft_printf
 MINILIBX_PATH = minilibx-linux
 SRCS_PATH = src/
+PARS_PATH = pars/
 NAME = so_long
 
 SRCS :=	$(addprefix $(SRCS_PATH), \
 		main.c\
 )
 
-PARS := $((pars/), \
+PARS := $(addprefix $(PARS_PATH), \
 	check_finish.c \
 	count_map.c \
 	check_map.c \
 	check_file_name.c \
 	get_next_line.c \
 )
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:%.c=%.o) $(PARS:%.c=%.o)
 
-.PHONY: all clean fclean re libft
+
+.PHONY: all clean fclean re libft re ft_printf
 
 all:$(NAME) 
 #	@echo "$(LIGHT_CYAN)Starting tasks..."
@@ -63,6 +66,9 @@ $(NAME): $(OBJS) libft ft_printf minilibx
 libft:
 	$(MAKE) -C $(LIBFT_PATH)
 
+ft_printf:
+	$(MAKE) -C $(FT_PRINTF_PATH)
+
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C $(LIBFT_PATH) clean
@@ -70,6 +76,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIBFT_PATH) fclean
+	$(MAKE) -C $(FT_PRINTF_PATH) fclean
 
 re: fclean all
 
