@@ -6,12 +6,13 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/13 18:19:51 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:21:16 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 # include "../includes/so_long.h"
+# include "../pars/so_long_pars.h"
 
 t_img	*load_sprite(void *img, char *filename)
 {
@@ -117,18 +118,22 @@ int	init_mlx_settings(t_game *game)
 }
 
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_game		game;
 
-	game = (t_game){0};
-	init_mlx_settings(&game);
-	game.test = load_sprite(game.mlx, "textures/frame.xpm");
-	printf("%p\n", game.test);
-	mlx_loop_hook(game.mlx, update, &game);
-	mlx_hook(game.win, KeyPress, KeyPressMask, key_pressed, &game);
-	mlx_hook(game.win, KeyRelease, KeyReleaseMask, key_released, &game);
-	mlx_hook(game.win, DestroyNotify, 0, close_game, &game);
-	mlx_loop(game.mlx);
+	if (pars(ac, av) != 0)
+	{
+		game = (t_game){0};
 
+		init_mlx_settings(&game);
+		printf("%p\n", game.test);
+		mlx_loop_hook(game.mlx, update, &game);
+		mlx_hook(game.win, KeyPress, KeyPressMask, key_pressed, &game);
+		mlx_hook(game.win, KeyRelease, KeyReleaseMask, key_released, &game);
+		mlx_hook(game.win, DestroyNotify, 0, close_game, &game);
+		mlx_loop(game.mlx);
+	}
+	else
+		return (pars(ac, av));
 }

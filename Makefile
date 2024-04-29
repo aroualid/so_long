@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/04/13 17:13:46 by aroualid         ###   ########.fr        #
+#    Updated: 2024/04/29 11:04:20 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,14 @@ NAME = so_long
 SRCS :=	$(addprefix $(SRCS_PATH), \
 		main.c\
 )
+
+PARS := $((pars/), \
+	check_finish.c \
+	count_map.c \
+	check_map.c \
+	check_file_name.c \
+	get_next_line.c \
+)
 OBJS = $(SRCS:%.c=%.o)
 
 .PHONY: all clean fclean re libft
@@ -49,8 +57,8 @@ all:$(NAME)
     #done
 	#@echo "$(LIGHT_MAGENTA)All tasks completed !                                                                "
 
-$(NAME): $(OBJS) libft minilibx
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -Llibft -lft -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
+$(NAME): $(OBJS) libft ft_printf minilibx
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -Llibft -lft -Lft_printf -lftprintf -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
 
 libft:
 	$(MAKE) -C $(LIBFT_PATH)

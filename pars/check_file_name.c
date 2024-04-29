@@ -6,11 +6,12 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/22 15:43:16 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:15:02 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
+#include "../includes/so_long.h"
 
 int	extension(char *av2)
 {
@@ -47,35 +48,25 @@ int	check_file(char *av2)
 		return (0);
 }
 
-int	main(int ac, char **av)
+int	pars(int ac, char **av)
 {
 	t_game	game;
 	if (ac == 2)
 	{
 		if (check_file (av[1]) == 0)
-			printf ("ERROR\n");
-		else if (check_file (av[1]) == 1 
-				&& get_len_line(av[1], &game) != 0 
-				&& count_element(game.map, &game) == 1)
+			return (ft_printf ("ERROR\n"), 0);
+		else if (check_file (av[1]) == 1
+			&& get_len_line(av[1], &game) != 0
+			&& count_element(game.map, &game) == 1)
 		{
-			printf("px = %i\n", game.pp_x);
-			printf("py = %i\n", game.pp_y);
-			printf("max x = %i\n", game.max_x);
-			printf("max y = %i\n", game.max_y);	
 			flood_fill(&game, game.pp_x, game.pp_y, av[1]);
 			if (count_element_ff(game.map, &game) == 0)
-				printf("ERROR4\n");
-			else
-			{
-				for(int i = 0; i < game.max_y; i++)
-				{
-					printf("%s", game.map[i]);
-				}
-			}
+				return (ft_printf("ERROR4\n"), 0);
 		}
 		else
-			printf("ERROR3\n");
+			return (ft_printf("ERROR3\n"), 0);
 	}
 	else
-		printf ("ERROR2\n");
+		return (ft_printf ("ERROR2\n"), 0);
+	return (1);
 }
