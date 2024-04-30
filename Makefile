@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/04/29 11:43:02 by aroualid         ###   ########.fr        #
+#    Updated: 2024/04/30 14:36:39 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ NAME = so_long
 
 SRCS :=	$(addprefix $(SRCS_PATH), \
 		main.c\
+		sprite_fruit.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \

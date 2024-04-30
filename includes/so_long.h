@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 16:58:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:09:02 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SO_LONG_H
 # define SCALE 2
 # define WIN_H 1080
-# define WIN_W 1920
+# define WIN_W 1920 - 64
 
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
@@ -25,6 +25,29 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdint.h>
+
+
+typedef struct s_xorshift32_state
+{
+    uint32_t    a;
+}        t_xorshift32_state;
+
+
+typedef struct s_collectible
+{
+	int		x;
+	int		y;
+	t_img	**fruit_sprites;
+	int		sprite_index;
+}	t_collectible;
+
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	t_img	**player_sprites;
+	int		player_index;
+}	t_player;
 
 
 typedef struct s_game
@@ -55,14 +78,39 @@ typedef struct s_game
 	bool				is_trail_drawn;
 	bool				spawn_enemy;
 	t_img				*screen;
+	t_img				**sprites_duck_wait;
+	int					sprite_duck_wait;
+
 	t_img				**sprites;
-	t_img				*test;
+
+	t_img				**correct_sprites;
+	t_img				**reverse_sprites;
+	t_img				**sprites_m;
+	int					sprite_reverse;
 	int					sprite_index;
+	int					sprite_mechant;
 	int					pp_x;
 	int					pp_y;
 	int					max_x;
 	int					max_y;
 	unsigned long		nb_frames;
+	int					fruit_index;
+	t_img				**sprites_apple;
+	t_img				**sprites_lemon;
+	t_img				**sprites_pear;
+	t_img				**sprites_strawberry;
+	t_img				**sprites_watermelon;
+	t_img				***load_fruit;
+	t_collectible		*collectibles;
+	t_player			player;
+	t_xorshift32_state	rand;
 }						t_game;
+
+t_img	*load_sprite(void *img, char *filename);
+t_img	**load_apple(t_game *game);
+t_img	**load_lemon(t_game *game);
+t_img	**load_pear(t_game *game);
+t_img	**load_strawberry(t_game *game);
+t_img	**load_watermelon(t_game *game);
 
 #endif
