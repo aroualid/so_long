@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/04/30 14:36:39 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/02 00:15:16 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIGHT_PURPLE=\033[1;35m
 
 
 CC = cc
-CFLAGS=  -Wall -Wextra -Werror  -g3
+CFLAGS=   -g3
 LIBFT_PATH = libft
 FT_PRINTF_PATH = ft_printf
 MINILIBX_PATH = minilibx-linux

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/30 19:05:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/02 00:39:24 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,13 +152,7 @@ int	update_player(t_game *game)
 	}
 	if (game->key_w == 0 && game->key_s == 0 && game->key_d == 0 && game->key_a == 0)
 	{	
-		game->sprites = game->sprites_duck_wait;
-		game->sprite_index= game->sprite_duck_wait;
-		if (game->nb_frames % 96 == 0)
-		{	
-			game->sprite_index++;
-			game->sprite_index = game->sprite_index%2;
-		}
+		game->sprites = game->sprites;
 	}
 	return (0);
 }
