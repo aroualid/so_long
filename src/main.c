@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/02 00:39:24 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:51:52 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,8 @@ int	update_player(t_game *game)
 	play = &game->player;
 	game->nb_frames++;
 	detect_key(game);
-	draw_sprite(game, game->sprites[game->sprite_index], play->x , play->y);
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 	{
-		game->sprites = game->correct_sprites;
 		if (game->nb_frames % 32 == 0)
 		{
 			game->sprite_index++;
@@ -138,22 +136,30 @@ int	update_player(t_game *game)
 	}
 	if (game->key_w && play->y > 0)
 		play->y--;
+
+	if (game->key_s && play->y < 1080 - 200)
+		play->y++;
 	if (game->key_a && play->x > 0)
 	{
 		game->sprites = game->reverse_sprites;
 		play->x--;
 	}
-	if (game->key_s && play->y < 1080 - 200)
-		play->y++;
 	if (game->key_d && play->x < 1920 - 150)
 	{
 		game->sprites = game->correct_sprites;
 		play->x++;
 	}
-	if (game->key_w == 0 && game->key_s == 0 && game->key_d == 0 && game->key_a == 0)
+	else if (game->key_w == 0 && game->key_s == 0 && game->key_d == 0 && game->key_a == 0)
 	{	
-		game->sprites = game->sprites;
+		game->sprites = game->sprites_duck_wait;
+		if (game->nb_frames % 96 == 0)
+		{
+			game->sprite_index++;
+			game->sprite_index = game->sprite_index%6;
+		}
 	}
+	draw_sprite(game, game->sprites[game->sprite_index], play->x , play->y);
+
 	return (0);
 }
 
@@ -237,10 +243,13 @@ t_img	**load_duck_reverse(t_game *game)
 t_img	**load_duck_wait(t_game *game)
 {
 	t_img	**ptr;
-	ptr = malloc(sizeof(t_img*) * 2);
+	ptr = malloc(sizeof(t_img*) * 6);
 	ptr[0] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/duck_wait_2.xpm");
-
+	ptr[2] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
+	ptr[3] = load_sprite(game->mlx, "textures/duck_wait_2.xpm");
+	ptr[4] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
+	ptr[5] = load_sprite(game->mlx, "textures/duck_wait_2.xpm");
 	game->sprites_duck_wait = ptr;
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/30 19:09:02 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:06:53 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,7 @@ t_img	**load_lemon(t_game *game);
 t_img	**load_pear(t_game *game);
 t_img	**load_strawberry(t_game *game);
 t_img	**load_watermelon(t_game *game);
+int		update_player(t_game *game);
+
 
 #endif
