@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 01:39:46 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 01:40:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,8 +348,6 @@ int	main(int ac, char **av)
 		game.player.y = game.pp_y * game.scale * 32; 
 		init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
 		game.last_key = 1;
-		printf("%i", game.player.x);
-		printf("%i", game.player.y);
 		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
 		//if (!game.test)
 		//	printf("AIRORE\n");
