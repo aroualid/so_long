@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/02 14:06:53 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:22:26 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_game
 	int					key_w;
 	int					key_s;
 	int					key_d;
+	int					last_key;
 	int					key_space;
 	int					key_esc;
 	int					map_width;
@@ -80,6 +81,8 @@ typedef struct s_game
 	t_img				*screen;
 	t_img				**sprites_duck_wait;
 	int					sprite_duck_wait;
+	t_img				**sprites_duck_wait_reverse;
+	int					sprite_duck_wait_reverse;
 
 	t_img				**sprites;
 

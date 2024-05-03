@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/02 14:51:52 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:23:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,15 @@ int	key_pressed(int keycode, t_game *game)
 	if (keycode == 's' || keycode == XK_Down)
 		game->key_s = 1;
 	if (keycode == 'a' || keycode == XK_Left)
+	{
 		game->key_a = 1;
+		game->last_key = 2;
+	}
 	if (keycode == 'd' || keycode == XK_Right)
+	{	
 		game->key_d = 1;
+		game->last_key = 1;
+	}
 	if (keycode == XK_space)
 		game->key_space = 1;
 	return (0);
@@ -92,7 +98,6 @@ int	key_released(int keycode, t_game *game)
 
 void	detect_key(t_game *game)
 {
-
 	if (game->key_esc)
 		close_game(game);
 }
@@ -135,10 +140,22 @@ int	update_player(t_game *game)
 		}
 	}
 	if (game->key_w && play->y > 0)
+	{
+		if (game->last_key == 1)
+			game->sprites = game->correct_sprites;
+		else if (game->last_key == 2)
+			game->sprites = game->reverse_sprites;
 		play->y--;
-
+	}
 	if (game->key_s && play->y < 1080 - 200)
+	{
+		if (game->last_key == 1)
+			game->sprites = game->correct_sprites;
+		else if (game->last_key == 2)
+			game->sprites = game->reverse_sprites;
+
 		play->y++;
+	}
 	if (game->key_a && play->x > 0)
 	{
 		game->sprites = game->reverse_sprites;
@@ -150,8 +167,11 @@ int	update_player(t_game *game)
 		play->x++;
 	}
 	else if (game->key_w == 0 && game->key_s == 0 && game->key_d == 0 && game->key_a == 0)
-	{	
-		game->sprites = game->sprites_duck_wait;
+	{
+		if (game->last_key == 1)
+			game->sprites = game->sprites_duck_wait;
+		else if (game->last_key == 2)
+			game->sprites = game->sprites_duck_wait_reverse;
 		if (game->nb_frames % 96 == 0)
 		{
 			game->sprite_index++;
@@ -253,6 +273,21 @@ t_img	**load_duck_wait(t_game *game)
 	game->sprites_duck_wait = ptr;
 	return (ptr);
 }
+
+t_img	**load_duck_wait_reverse(t_game *game)
+{
+	t_img	**ptr;
+	ptr = malloc(sizeof(t_img*) * 6);
+	ptr[0] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
+	ptr[1] = load_sprite(game->mlx, "textures/2_duck_wait_2.xpm");
+	ptr[2] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
+	ptr[3] = load_sprite(game->mlx, "textures/2_duck_wait_2.xpm");
+	ptr[4] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
+	ptr[5] = load_sprite(game->mlx, "textures/2_duck_wait_2.xpm");
+	game->sprites_duck_wait_reverse = ptr;
+	return (ptr);
+}
+
 t_img	**load_mechant(t_game *game)
 {
 	t_img	**ptr;
@@ -316,6 +351,7 @@ int	main(int ac, char **av)
 		init_mlx_settings(&game);
 		game.player.x = 500;
 		game.player.y = 500;
+		game.last_key = 1;
 		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
 		//if (!game.test)
 		//	printf("AIRORE\n");
@@ -324,6 +360,7 @@ int	main(int ac, char **av)
 		load_duck(&game);
 		load_mechant(&game);
 		load_duck_wait(&game);
+		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
 		game.collectibles_numbers = 5;
 
