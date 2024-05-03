@@ -1,0 +1,7 @@
+*.o
+push_swap
+a.out
+.vscode
+.dist
+sujet.pdf
+libft/libft.a

@@ -6,12 +6,39 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 13:09:00 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 23:58:13 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
 #include "../includes/so_long.h"
+
+int	count_p_ff(char **ptr, t_game *game)
+{
+	int		p;
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	p = 0;
+	i = 0;
+	while (i < game->max_y)
+	{
+		str = ptr[i];
+		while (str[j] != '\n')
+		{
+			if (str[j] == 'P')
+			{
+				p++;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (p);
+}
 
 int	extension(char *av2)
 {
@@ -29,7 +56,7 @@ int	extension(char *av2)
 			return (1);
 		}
 		return (1);
-	}	
+	}
 	else if (i <= 4)
 		return (0);
 	return (0);
@@ -48,20 +75,18 @@ int	check_file(char *av2)
 		return (0);
 }
 
-int	pars(int ac, char **av)
+int	pars(int ac, char **av, t_game *game)
 {
-	t_game	game;
-
 	if (ac == 2)
 	{
 		if (check_file (av[1]) == 0)
 			return (ft_printf ("ERROR\n"), 0);
 		else if (check_file (av[1]) == 1
-			&& get_len_line(av[1], &game) != 0
-			&& count_element(game.map, &game) == 1)
+			&& get_len_line(av[1], game) != 0
+			&& count_element(game->map, game) == 1)
 		{
-			flood_fill(&game, game.pp_x, game.pp_y, av[1]);
-			if (count_element_ff(game.map, &game) == 0)
+			flood_fill(game, game->pp_x, game->pp_y, av[1]);
+			if (count_element_ff(game->map, game) == 0)
 				return (ft_printf("ERROR4\n"), 0);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 18:12:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 01:27:51 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
-# define SCALE 2
 # define WIN_H 1080
 # define WIN_W 1920 - 64
+# define SCALE 2
 
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"

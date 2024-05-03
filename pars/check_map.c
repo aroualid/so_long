@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/04/29 13:17:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 23:28:28 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ char	**get_each_line(char *file, t_game *game)
 	i = game->max_y;
 	ptr = ft_calloc(sizeof(char **), i);
 	game->map = ft_calloc(sizeof(char **), i);
+	game->map_ok = ft_calloc(sizeof(char **), i);
 	while (j < i)
 	{
 		ptr[j] = ft_strdup(str);
 		game->map[j] = ft_strdup(str);
+		game->map_ok[j] = ft_strdup(str);
 		str = get_next_line(infile);
 		j++;
 	}

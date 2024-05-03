@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 18:27:39 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 23:21:44 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	count_element_ff(char **file, t_game *game)
 
 	c = count_c(file, game);
 	e = count_e(file, game);
-	p = count_p(file, game);
+	p = count_p_ff(file, game);
 	if (c >= 1 || e == 1 || p == 1)
 		return (0);
 	else

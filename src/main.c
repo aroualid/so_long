@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 17:57:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 01:39:46 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int	update_player(t_game *game)
 	play = &game->player;
 	game->nb_frames++;
 	detect_key(game);
-	game->scale = 1;
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 	{
 		if (game->nb_frames % 32 == 0)
@@ -143,7 +142,7 @@ int	update_player(t_game *game)
 			game->sprites = game->reverse_sprites;
 		play->y--;
 	}
-	if (game->key_s && play->y <= 1080 - 200)
+	if (game->key_s && play->y <= game->scale * game->max_y * 32)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->correct_sprites;
@@ -157,7 +156,7 @@ int	update_player(t_game *game)
 		game->sprites = game->reverse_sprites;
 		play->x--;
 	}
-	if (game->key_d && play->x <= 1920 - 150)
+	if (game->key_d && play->x <= game->scale * game->max_x * 32)
 	{
 		game->sprites = game->correct_sprites;
 		play->x++;
@@ -185,7 +184,7 @@ int	update(t_game *game)
 	game->nb_frames++;
 	clear_sprites(game);
 	detect_key(game);
-	draw_sprite(game, game->sprites_m[game->sprite_mechant], 1000, 500);
+	draw_sprite(game, game->sprites_m[game->sprite_mechant], 10, 50);
 
 	for (int i = 0; i < game->collectibles_numbers; i++)
 	{
@@ -209,7 +208,7 @@ int	update(t_game *game)
 
 }
 
-int	init_mlx_settings(t_game *game)
+int	init_mlx_settings(t_game *game, int x, int y)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -217,8 +216,8 @@ int	init_mlx_settings(t_game *game)
 		ft_putstr_fd("Error\n❌the mlx pointer is NULL❌\n", 2);
 		return (-1);
 	}
-	game->win = mlx_new_window(game->mlx, 1920, 1080, "so_long");
-	game->screen = mlx_new_image(game->mlx, 1920, 1080);
+	game->win = mlx_new_window(game->mlx, x, y, "so_long");
+	game->screen = mlx_new_image(game->mlx, x, y);
 	return (0);
 }
 
@@ -325,8 +324,8 @@ void	generate_random_fruit(t_game *game, int index)
 	uint32_t	random;
 
 	random = xorshift32(&game->rand) % 5;
-	game->collectibles[index].x = xorshift32(&game->rand) % 1300 + 200;
-	game->collectibles[index].y = xorshift32(&game->rand) % 600 + 200;
+	game->collectibles[index].x = xorshift32(&game->rand) % game->max_x * 32 * game->scale;
+	game->collectibles[index].y = xorshift32(&game->rand) % game->max_y * 32 * game->scale;
 	game->collectibles[index].sprite_index = 0;
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];
 }
@@ -337,17 +336,20 @@ int	main(int ac, char **av)
 	int			i;
 	void		*p;
 
-	if (pars(ac, av) != 0)
+	game = (t_game){0};
+	if (pars(ac, av, &game) != 0)
 	{
 		i = 0;
-		game = (t_game){0};
 		p = malloc(1);
 		game.rand.a = (uint32_t)(unsigned long) p;
 		free(p);
-		init_mlx_settings(&game);
-		game.player.x = game.pp_x;
-		game.player.y = game.pp_y;
+		game.scale = SCALE;
+		game.player.x = game.pp_x * game.scale * 32;
+		game.player.y = game.pp_y * game.scale * 32; 
+		init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
 		game.last_key = 1;
+		printf("%i", game.player.x);
+		printf("%i", game.player.y);
 		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
 		//if (!game.test)
 		//	printf("AIRORE\n");
@@ -359,7 +361,6 @@ int	main(int ac, char **av)
 		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
 		game.collectibles_numbers = 5;
-
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
 		for (int i = 0; i < game.collectibles_numbers; i++)
 			generate_random_fruit(&game, i);
@@ -368,5 +369,6 @@ int	main(int ac, char **av)
 		mlx_hook(game.win, KeyRelease, KeyReleaseMask, key_released, &game);
 		mlx_hook(game.win, DestroyNotify, 0, close_game, &game);
 		mlx_loop(game.mlx);
+
 	}
 }
