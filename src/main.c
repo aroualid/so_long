@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 15:23:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 17:57:37 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	draw_sprite(t_game *game, t_img *img, int x, int y)
 	unsigned int	color;
 
 	i = 0;
-	while (i < img->width * 4)
+	while (i < img->width * game->scale)
 	{
 		j = -1;
-		while (++j < img->height * 4)
+		while (++j < img->height * game->scale)
 		{
 			if (j + y  < 0 || j + y >= 1080
 				|| i + x < 0 || i + x >= 1920)
 				continue ;
 			color = ((int *)img->data)[(int)
-				(j / 4) *img->width + (int)(i / 4)];
+				(j / game->scale) *img->width + (int)(i / game->scale)];
 			if (color == 0xFF000000)
 				continue ;
 			((int *)game->screen->data)[(y + j )
@@ -115,11 +115,6 @@ void	clear_sprites(t_game *game)
 int	update_apply_move(t_game *game)
 {
 	t_player	*play;
-	
-	play = &game->player;
-	game->nb_frames++;
-	detect_key(game);
-	draw_sprite(game, game->sprites[game->sprite_index], play->x , play->y);
 
 	return (0);
 
@@ -131,6 +126,7 @@ int	update_player(t_game *game)
 	play = &game->player;
 	game->nb_frames++;
 	detect_key(game);
+	game->scale = 1;
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 	{
 		if (game->nb_frames % 32 == 0)
@@ -139,7 +135,7 @@ int	update_player(t_game *game)
 			game->sprite_index = game->sprite_index%6;
 		}
 	}
-	if (game->key_w && play->y > 0)
+	if (game->key_w && play->y >= 0)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->correct_sprites;
@@ -147,7 +143,7 @@ int	update_player(t_game *game)
 			game->sprites = game->reverse_sprites;
 		play->y--;
 	}
-	if (game->key_s && play->y < 1080 - 200)
+	if (game->key_s && play->y <= 1080 - 200)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->correct_sprites;
@@ -156,17 +152,17 @@ int	update_player(t_game *game)
 
 		play->y++;
 	}
-	if (game->key_a && play->x > 0)
+	if (game->key_a && play->x >= 0)
 	{
 		game->sprites = game->reverse_sprites;
 		play->x--;
 	}
-	if (game->key_d && play->x < 1920 - 150)
+	if (game->key_d && play->x <= 1920 - 150)
 	{
 		game->sprites = game->correct_sprites;
 		play->x++;
 	}
-	else if (game->key_w == 0 && game->key_s == 0 && game->key_d == 0 && game->key_a == 0)
+	else if (game->key_w != 1 && game->key_s != 1 && game->key_d != 1 && game->key_a != 1)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->sprites_duck_wait;
@@ -204,7 +200,7 @@ int	update(t_game *game)
 	update_player(game);
 
 	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
-	if (game->nb_frames % 32 == 0)
+	if (game->nb_frames % 64 == 0)
 	{
 		game->sprite_mechant++;
 		game->sprite_mechant = game->sprite_mechant%4;
@@ -349,8 +345,8 @@ int	main(int ac, char **av)
 		game.rand.a = (uint32_t)(unsigned long) p;
 		free(p);
 		init_mlx_settings(&game);
-		game.player.x = 500;
-		game.player.y = 500;
+		game.player.x = game.pp_x;
+		game.player.y = game.pp_y;
 		game.last_key = 1;
 		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
 		//if (!game.test)

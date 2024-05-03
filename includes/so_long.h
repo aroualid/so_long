@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 15:22:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:12:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	void				*win;
 	char				*map_path;
 	char				**map;
+	char				**map_ok;
 	float				move_count;
 	int					step_count;
 	int					key_a;
@@ -107,6 +108,7 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
+	int					scale;
 }						t_game;
 
 t_img	*load_sprite(void *img, char *filename);
