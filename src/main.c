@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 20:18:03 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:51:25 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,19 +177,36 @@ int	update_player(t_game *game)
 	return (0);
 }
 
+uint32_t    xorshift32(t_xorshift32_state *state)
+{
+    uint32_t    x;
+
+    x = state->a;
+    x ^= x << 13;
+    x ^= x >> 17;
+    x ^= x << 5;
+    return (state->a = x);
+}
+
 void	draw_tree(t_game *game)
 {
 	int	x;
 	int	y;
-	
+	uint32_t	random;
+	int	t;
+			
+	random = xorshift32(&game->rand) % 5;
+	t = game->collectibles[random].sprite_index;
 	x = 0;
 	y = 0;
 	while (y < game->max_y)
 	{
 		while(x < game->max_x)
 		{
-			if (game->map[y][x] == '1')
+			if (game->map_ok[y][x] == '1')
 				draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
+			if (game->map_ok[y][x] == 'C')
+				draw_sprite(game, game->collectibles[random].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
 			x++;
 		}
 		y++;
@@ -208,7 +225,7 @@ int	update(t_game *game)
 	for (int i = 0; i < game->collectibles_numbers; i++)
 	{
 		col = &game->collectibles[i];
-		draw_sprite(game, col->fruit_sprites[col->sprite_index], col->x, col->y);
+		//draw_sprite(game, col->fruit_sprites[col->sprite_index], col->x, col->y);
 		if (game->nb_frames % 35 == 0)
 		{
 			col->sprite_index++;
@@ -327,28 +344,15 @@ void	load_fruit(t_game *game)
 	game->load_fruit[4] = load_watermelon(game);
 }
 
-uint32_t    xorshift32(t_xorshift32_state *state)
-{
-    uint32_t    x;
-
-    x = state->a;
-    x ^= x << 13;
-    x ^= x >> 17;
-    x ^= x << 5;
-    return (state->a = x);
-}
-
-
 void	generate_random_fruit(t_game *game, int index)
 {
 	uint32_t	random;
 	
 	random = xorshift32(&game->rand) % 5;
-	game->collectibles[index].x = 5 % game->max_x * 32 * game->scale;
-	game->collectibles[index].y = 5 % game->max_y * 32 * game->scale;
 	game->collectibles[index].sprite_index = 0;
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];
 }
+
 
 int	main(int ac, char **av)
 {
@@ -380,7 +384,7 @@ int	main(int ac, char **av)
 		load_duck_reverse(&game);
 		game.tree = load_sprite(game.mlx, "textures/tree3.xpm");
 		game.collectibles_numbers = game.col_numbers;
-		printf("%i", game.collectibles_numbers);
+		printf("%i\n", game.collectibles_numbers);
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
 		for (int i = 0; i < get_line(av[1], &game); i++)
 		{
