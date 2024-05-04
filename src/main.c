@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 01:40:17 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:14:16 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int	update_player(t_game *game)
 	detect_key(game);
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 	{
-		if (game->nb_frames % 32 == 0)
+		if (game->nb_frames % 32 * game->scale == 0)
 		{
 			game->sprite_index++;
 			game->sprite_index = game->sprite_index%6;
@@ -142,7 +142,7 @@ int	update_player(t_game *game)
 			game->sprites = game->reverse_sprites;
 		play->y--;
 	}
-	if (game->key_s && play->y <= game->scale * game->max_y * 32)
+	if (game->key_s && play->y <= game->scale * game->max_y * 32 - 64)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->correct_sprites;
@@ -156,7 +156,7 @@ int	update_player(t_game *game)
 		game->sprites = game->reverse_sprites;
 		play->x--;
 	}
-	if (game->key_d && play->x <= game->scale * game->max_x * 32)
+	if (game->key_d && play->x <= (game->scale * game->max_x * 32) - 64)
 	{
 		game->sprites = game->correct_sprites;
 		play->x++;
@@ -167,7 +167,7 @@ int	update_player(t_game *game)
 			game->sprites = game->sprites_duck_wait;
 		else if (game->last_key == 2)
 			game->sprites = game->sprites_duck_wait_reverse;
-		if (game->nb_frames % 96 == 0)
+		if (game->nb_frames % 96 * game->scale == 0)
 		{
 			game->sprite_index++;
 			game->sprite_index = game->sprite_index%6;
