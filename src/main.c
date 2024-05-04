@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 20:12:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:18:03 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,7 +379,8 @@ int	main(int ac, char **av)
 		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
 		game.tree = load_sprite(game.mlx, "textures/tree3.xpm");
-		game.collectibles_numbers = 5;
+		game.collectibles_numbers = game.col_numbers;
+		printf("%i", game.collectibles_numbers);
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
 		for (int i = 0; i < get_line(av[1], &game); i++)
 		{

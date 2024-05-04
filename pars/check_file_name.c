@@ -6,12 +6,37 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 19:20:02 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:19:09 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
 #include "../includes/so_long.h"
+
+int	count_c_ff(char **ptr, t_game *game)
+{
+	int		c;
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	c = 0;
+	i = 0;
+	while (i < game->max_y)
+	{
+		str = ptr[i];
+		while (str[j] != '\n')
+		{
+			if (str[j] == 'C')
+				c++;
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (c);
+}
 
 int	count_p_ff(char **ptr, t_game *game)
 {
