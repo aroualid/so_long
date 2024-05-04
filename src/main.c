@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 17:23:30 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 16:14:16 by aroualid         ###   ########.fr       */
+/*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
+/*   Updated: 2024/05/04 20:12:26 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 # include "../includes/so_long.h"
 # include "../pars/so_long_pars.h"
@@ -38,8 +37,8 @@ void	draw_sprite(t_game *game, t_img *img, int x, int y)
 		j = -1;
 		while (++j < img->height * game->scale)
 		{
-			if (j + y  < 0 || j + y >= 1080
-				|| i + x < 0 || i + x >= 1920)
+			if (j + y  < 0 || j + y >= (game->scale * game->max_y * 32)
+				|| i + x < 0 || i + x >= (game->scale * game->max_x * 32))
 				continue ;
 			color = ((int *)img->data)[(int)
 				(j / game->scale) *img->width + (int)(i / game->scale)];
@@ -142,7 +141,7 @@ int	update_player(t_game *game)
 			game->sprites = game->reverse_sprites;
 		play->y--;
 	}
-	if (game->key_s && play->y <= game->scale * game->max_y * 32 - 64)
+	if (game->key_s && play->y <= game->scale * game->max_y * 32 - 32 * SCALE)
 	{
 		if (game->last_key == 1)
 			game->sprites = game->correct_sprites;
@@ -156,7 +155,7 @@ int	update_player(t_game *game)
 		game->sprites = game->reverse_sprites;
 		play->x--;
 	}
-	if (game->key_d && play->x <= (game->scale * game->max_x * 32) - 64)
+	if (game->key_d && play->x <= game->scale * game->max_x * 32 - 32 * SCALE)
 	{
 		game->sprites = game->correct_sprites;
 		play->x++;
@@ -176,6 +175,26 @@ int	update_player(t_game *game)
 	draw_sprite(game, game->sprites[game->sprite_index], play->x , play->y);
 
 	return (0);
+}
+
+void	draw_tree(t_game *game)
+{
+	int	x;
+	int	y;
+	
+	x = 0;
+	y = 0;
+	while (y < game->max_y)
+	{
+		while(x < game->max_x)
+		{
+			if (game->map[y][x] == '1')
+				draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
+			x++;
+		}
+		y++;
+		x = 0;
+	}
 }
 
 int	update(t_game *game)
@@ -204,6 +223,7 @@ int	update(t_game *game)
 		game->sprite_mechant++;
 		game->sprite_mechant = game->sprite_mechant%4;
 	}
+	draw_tree(game);
 	return (0);
 
 }
@@ -322,10 +342,10 @@ uint32_t    xorshift32(t_xorshift32_state *state)
 void	generate_random_fruit(t_game *game, int index)
 {
 	uint32_t	random;
-
+	
 	random = xorshift32(&game->rand) % 5;
-	game->collectibles[index].x = xorshift32(&game->rand) % game->max_x * 32 * game->scale;
-	game->collectibles[index].y = xorshift32(&game->rand) % game->max_y * 32 * game->scale;
+	game->collectibles[index].x = 5 % game->max_x * 32 * game->scale;
+	game->collectibles[index].y = 5 % game->max_y * 32 * game->scale;
 	game->collectibles[index].sprite_index = 0;
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];
 }
@@ -358,8 +378,13 @@ int	main(int ac, char **av)
 		load_duck_wait(&game);
 		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
+		game.tree = load_sprite(game.mlx, "textures/tree3.xpm");
 		game.collectibles_numbers = 5;
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
+		for (int i = 0; i < get_line(av[1], &game); i++)
+		{
+			printf("%s", game.map_ok[i]);
+		}
 		for (int i = 0; i < game.collectibles_numbers; i++)
 			generate_random_fruit(&game, i);
 		mlx_loop_hook(game.mlx, update, &game);

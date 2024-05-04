@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 23:21:44 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:55:03 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	count_c(char **ptr, t_game *game)
 		i++;
 		j = 0;
 	}
+	game->col_numbers = c;
 	return (c);
 }
 

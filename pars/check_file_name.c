@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/03 23:58:13 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:20:02 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	check_file(char *av2)
 
 int	pars(int ac, char **av, t_game *game)
 {
+	
 	if (ac == 2)
 	{
 		if (check_file (av[1]) == 0)

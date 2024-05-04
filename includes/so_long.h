@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 16:16:09 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:55:28 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SO_LONG_H
 # define WIN_H 1080
 # define WIN_W 1920 - 64
-# define SCALE 2
+# define SCALE 3
 
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
@@ -52,12 +52,16 @@ typedef struct s_player
 
 typedef struct s_game
 {
+	int					col_x;
+	int					col_y;
+	int					col_numbers;
 	void				*mlx;
 	void				*win;
 	char				*map_path;
 	char				**map;
 	char				**map_ok;
 	int					scale_calc;
+	t_img				*tree;
 	float				move_count;
 	int					step_count;
 	int					key_a;
@@ -109,7 +113,7 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
-	int					scale;
+	float				scale;
 }						t_game;
 
 t_img	*load_sprite(void *img, char *filename);
