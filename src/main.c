@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 22:51:25 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/05 14:51:08 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,30 +188,33 @@ uint32_t    xorshift32(t_xorshift32_state *state)
     return (state->a = x);
 }
 
-void	draw_tree(t_game *game)
+void    draw_tree(t_game *game)
 {
-	int	x;
-	int	y;
-	uint32_t	random;
-	int	t;
-			
-	random = xorshift32(&game->rand) % 5;
-	t = game->collectibles[random].sprite_index;
-	x = 0;
-	y = 0;
-	while (y < game->max_y)
-	{
-		while(x < game->max_x)
-		{
-			if (game->map_ok[y][x] == '1')
-				draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
-			if (game->map_ok[y][x] == 'C')
-				draw_sprite(game, game->collectibles[random].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
-			x++;
-		}
-		y++;
-		x = 0;
-	}
+    int    x;
+    int    y;
+    int    t;
+    int    collectible_number;
+
+    collectible_number = 0;
+    x = 0;
+    y = 0;
+    while (y < game->max_y)
+    {
+        while(x < game->max_x)
+        {
+            if (game->map_ok[y][x] == '1')
+                draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
+            if (game->map_ok[y][x] == 'C') 
+						{
+                t = game->collectibles[collectible_number].sprite_index;
+                draw_sprite(game, game->collectibles[collectible_number].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
+                collectible_number++;
+             }
+            x++;
+        }
+        y++;
+        x = 0;
+    }
 }
 
 int	update(t_game *game)
@@ -220,7 +223,8 @@ int	update(t_game *game)
 	game->nb_frames++;
 	clear_sprites(game);
 	detect_key(game);
-	draw_sprite(game, game->sprites_m[game->sprite_mechant], 10, 50);
+	draw_tree(game);
+	draw_sprite(game, game->sprites_m[game->sprite_mechant], 100, 100);
 
 	for (int i = 0; i < game->collectibles_numbers; i++)
 	{
@@ -240,7 +244,6 @@ int	update(t_game *game)
 		game->sprite_mechant++;
 		game->sprite_mechant = game->sprite_mechant%4;
 	}
-	draw_tree(game);
 	return (0);
 
 }
