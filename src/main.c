@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/05 17:56:05 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:16:37 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_img	*load_sprite(void *img, char *filename)
 {
 	int	width;
 	int	height;
-
+	
 	if (!img || !filename)
 		return (NULL);
 	return (mlx_xpm_file_to_image(img, filename, &width, &height));
@@ -202,6 +202,8 @@ void    draw_tree(t_game *game)
     {
         while(x < game->max_x)
         {
+			if (game->map[y][x] == 'X' || game->map[y][x] == '1')
+				draw_sprite(game, game->sol, x * game->scale * 32, y * game->scale * 32);
             if (game->map_ok[y][x] == '1')
                 draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
             if (game->map_ok[y][x] == 'C') 
@@ -225,7 +227,6 @@ int	update(t_game *game)
 	detect_key(game);
 	draw_tree(game);
 	draw_sprite(game, game->sprites_m[game->sprite_mechant], 100, 100);
-
 	for (int i = 0; i < game->collectibles_numbers; i++)
 	{
 		col = &game->collectibles[i];
@@ -385,13 +386,14 @@ int	main(int ac, char **av)
 		load_duck_wait(&game);
 		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
-		game.tree = load_sprite(game.mlx, "textures/tree8.xpm");
+		game.tree = load_sprite(game.mlx, "textures/tree3.xpm");
+		game.sol = load_sprite(game.mlx, "textures/traps1.xpm");
 		game.collectibles_numbers = game.col_numbers;
 		printf("%i\n", game.collectibles_numbers);
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
 		for (int i = 0; i < get_line(av[1], &game); i++)
 		{
-			printf("%s", game.map_ok[i]);
+			printf("%s", game.map[i]);
 		}
 		for (int i = 0; i < game.collectibles_numbers; i++)
 			generate_random_fruit(&game, i);

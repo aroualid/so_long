@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 19:55:28 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:59:49 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ typedef struct s_game
 	char				*map_path;
 	char				**map;
 	char				**map_ok;
+	
 	int					scale_calc;
 	t_img				*tree;
+	t_img				*sol;
 	float				move_count;
 	int					step_count;
 	int					key_a;
