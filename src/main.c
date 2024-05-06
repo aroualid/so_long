@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/06 15:35:15 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:44:32 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ int	update_player(t_game *game)
 			game->sprites = game->sprites_duck_wait;
 		else if (game->last_key == 2)
 			game->sprites = game->sprites_duck_wait_reverse;
-		if (game->nb_frames % 96 / game->scale == 0)
+		if (game->nb_frames % 96  == 0)
 		{
 			game->sprite_index++;
 			game->sprite_index = game->sprite_index%6;
@@ -269,7 +269,6 @@ int	update(t_game *game)
 	clear_sprites(game);
 	detect_key(game);
 	draw_tree(game);
-	draw_sprite(game, game->sprites_m[game->sprite_mechant], 100, 100);
 	for (int i = 0; i < game->collectibles_numbers; i++)
 	{
 		col = &game->collectibles[i];
@@ -281,7 +280,7 @@ int	update(t_game *game)
 		}
 	}
 	update_player(game);
-
+	draw_sprite(game, game->sprites_m[game->sprite_mechant], 100, 100);
 	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
 	if (game->nb_frames % 64 == 0)
 	{
