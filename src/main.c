@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/06 15:44:32 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/07 00:32:13 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,24 +241,24 @@ void    draw_tree(t_game *game)
     y = 0;
     while (y < game->max_y)
     {
-        while(x < game->max_x)
-        {
-			if (game->map_ok[y][x] == 'V')
-				collectible_number++;
-			if (game->map[y][x] == 'X' || game->map[y][x] == '1')
-				draw_sprite(game, game->sol[0], x * game->scale * 32, y * game->scale * 32);
-            if (game->map_ok[y][x] == '1')
-                draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
-            if (game->map_ok[y][x] == 'C') 
-			{
-                t = game->collectibles[collectible_number].sprite_index;
-                draw_sprite(game, game->collectibles[collectible_number].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
-                collectible_number++;
-            }
-			x++;
+			while(x < game->max_x)
+      {
+				if (game->map_ok[y][x] == 'V')
+					collectible_number++;
+				if (game->map[y][x] == 'X' || game->map[y][x] == '1')
+					draw_sprite(game, game->sol[0], x * game->scale * 32, y * game->scale * 32);
+        if (game->map_ok[y][x] == '1')
+					draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
+        if (game->map_ok[y][x] == 'C') 
+				{
+					t = game->collectibles[collectible_number].sprite_index;
+					draw_sprite(game, game->collectibles[collectible_number].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
+					collectible_number++;
         }
-        y++;
-        x = 0;
+				x++;
+      }
+      y++;
+      x = 0;
     }
 }
 
@@ -421,6 +421,7 @@ int	main(int ac, char **av)
 	void		*p;
 
 	game = (t_game){0};
+	init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
 	if (pars(ac, av, &game) != 0)
 	{
 		i = 0;
@@ -430,7 +431,6 @@ int	main(int ac, char **av)
 		game.scale = SCALE;
 		game.player.x = game.pp_x * game.scale * 32;
 		game.player.y = game.pp_y * game.scale * 32; 
-		init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
 		game.last_key = 1;
 		//game.test = load_sprite(game.mlx, (char *) game.sprites[game.sprite_index]);
 		//if (!game.test)
