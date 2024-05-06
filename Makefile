@@ -6,11 +6,11 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/03 21:26:05 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/06 13:25:37 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
-CFLAGS=  -g3
+CFLAGS=  -Wall -Wextra -Werror -g3
 LIBFT_PATH = libft
 FT_PRINTF_PATH = ft_printf
 MINILIBX_PATH = minilibx-linux

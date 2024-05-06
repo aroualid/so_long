@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/06 11:59:49 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:38:01 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ typedef struct s_game
 	char				*map_path;
 	char				**map;
 	char				**map_ok;
-	
 	int					scale_calc;
 	t_img				*tree;
-	t_img				*sol;
+	int					sol_index;
+	t_img				**sol;
 	float				move_count;
 	int					step_count;
 	int					key_a;
@@ -76,6 +76,7 @@ typedef struct s_game
 	int					map_width;
 	int					map_height;
 	int					collectibles_numbers;
+	int					col_num;
 	int					bg1_scroll;
 	int					bg2_scroll;
 	int					water_scroll;
@@ -115,7 +116,8 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
-	float				scale;
+	int					scale;
+	int					sol_frame;
 }						t_game;
 
 t_img	*load_sprite(void *img, char *filename);

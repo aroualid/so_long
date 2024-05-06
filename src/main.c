@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/06 12:16:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:35:15 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_img	*load_sprite(void *img, char *filename)
 		return (NULL);
 	return (mlx_xpm_file_to_image(img, filename, &width, &height));
 }
-
 
 void	draw_sprite(t_game *game, t_img *img, int x, int y)
 {
@@ -111,13 +110,47 @@ void	clear_sprites(t_game *game)
 	}
 }
 
-int	update_apply_move(t_game *game)
+void	draw_exit(t_game *game)
 {
-	t_player	*play;
+	int	y;
+	int	x;
 
-	return (0);
+	y = 0;
+	x = 0;
+	game->sol_frame++;
+	while (y < game->max_y - 1)
+    {
+        while(x < game->max_x - 1)
+        {
+			if (game->map_ok[y][x] == 'E')
+			{
+				draw_sprite(game, game->sol[game->sol_index], game->scale * 32 * x, game->scale * 32 * y);
+				if (game->sol_frame % 32 / game->scale == 0 && game->sol_index < 3)
+				{
+					game->sol_index++;
+				}
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 
 }
+
+/*void	collect_fruit(t_game *game)
+{
+	int	i;
+
+	i = 3;
+	{
+		i--;
+	}
+	if (i == 0)
+	{
+		printf("OK");
+	}
+}*/
 int	update_player(t_game *game)
 {
 	t_player	*play;
@@ -127,7 +160,7 @@ int	update_player(t_game *game)
 	detect_key(game);
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 	{
-		if (game->nb_frames % 32 * game->scale == 0)
+		if (game->nb_frames % 32  == 0)
 		{
 			game->sprite_index++;
 			game->sprite_index = game->sprite_index%6;
@@ -139,7 +172,7 @@ int	update_player(t_game *game)
 			game->sprites = game->correct_sprites;
 		else if (game->last_key == 2)
 			game->sprites = game->reverse_sprites;
-		play->y--;
+		play->y -= game->scale;
 	}
 	if (game->key_s && play->y <= game->scale * game->max_y * 32 - 32 * SCALE)
 	{
@@ -147,18 +180,17 @@ int	update_player(t_game *game)
 			game->sprites = game->correct_sprites;
 		else if (game->last_key == 2)
 			game->sprites = game->reverse_sprites;
-
-		play->y++;
+		play->y += game->scale;
 	}
 	if (game->key_a && play->x >= 0)
 	{
 		game->sprites = game->reverse_sprites;
-		play->x--;
+		play->x -= game->scale;
 	}
 	if (game->key_d && play->x <= game->scale * game->max_x * 32 - 32 * SCALE)
 	{
 		game->sprites = game->correct_sprites;
-		play->x++;
+		play->x += game->scale;
 	}
 	else if (game->key_w != 1 && game->key_s != 1 && game->key_d != 1 && game->key_a != 1)
 	{
@@ -166,14 +198,23 @@ int	update_player(t_game *game)
 			game->sprites = game->sprites_duck_wait;
 		else if (game->last_key == 2)
 			game->sprites = game->sprites_duck_wait_reverse;
-		if (game->nb_frames % 96 * game->scale == 0)
+		if (game->nb_frames % 96 / game->scale == 0)
 		{
 			game->sprite_index++;
 			game->sprite_index = game->sprite_index%6;
 		}
 	}
+    if (game->map_ok[(play->y + 16 * game->scale) / (32 * game->scale)][(play->x + 16 * game->scale) / (32 * game->scale)] == 'C')
+	{
+		game->col_num--;
+		printf("%i\n", game->col_num);
+		game->map_ok[(play->y + 16 * game->scale) / (32 * game->scale)][(play->x + 16 * game->scale) / (32 * game->scale)] = 'V';
+	}
+	if (game->col_num == 0)
+	{
+		draw_exit(game);
+	}
 	draw_sprite(game, game->sprites[game->sprite_index], play->x , play->y);
-
 	return (0);
 }
 
@@ -194,7 +235,7 @@ void    draw_tree(t_game *game)
     int    y;
     int    t;
     int    collectible_number;
-
+	
     collectible_number = 0;
     x = 0;
     y = 0;
@@ -202,17 +243,19 @@ void    draw_tree(t_game *game)
     {
         while(x < game->max_x)
         {
+			if (game->map_ok[y][x] == 'V')
+				collectible_number++;
 			if (game->map[y][x] == 'X' || game->map[y][x] == '1')
-				draw_sprite(game, game->sol, x * game->scale * 32, y * game->scale * 32);
+				draw_sprite(game, game->sol[0], x * game->scale * 32, y * game->scale * 32);
             if (game->map_ok[y][x] == '1')
                 draw_sprite(game, game->tree , x * game->scale * 32 ,y * game->scale * 32);
             if (game->map_ok[y][x] == 'C') 
-						{
+			{
                 t = game->collectibles[collectible_number].sprite_index;
                 draw_sprite(game, game->collectibles[collectible_number].fruit_sprites[t], x * game->scale * 32, y * game->scale * 32);
                 collectible_number++;
-             }
-            x++;
+            }
+			x++;
         }
         y++;
         x = 0;
@@ -351,13 +394,27 @@ void	load_fruit(t_game *game)
 void	generate_random_fruit(t_game *game, int index)
 {
 	uint32_t	random;
-	
+	uint32_t	i;
+
+	i = 5;
 	random = xorshift32(&game->rand) % 5;
 	game->collectibles[index].sprite_index = 0;
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];
 }
 
+t_img	**load_exit(t_game *game)
+{
+	t_img **ptr;
 
+	ptr = malloc(sizeof(t_img **) * 4);
+	ptr[0] = load_sprite(game->mlx, "textures/traps1.xpm");
+	ptr[1] = load_sprite(game->mlx, "textures/traps2.xpm");
+	ptr[2] = load_sprite(game->mlx, "textures/traps3.xpm");
+	ptr[3] = load_sprite(game->mlx, "textures/traps4.xpm");
+
+	game->sol = ptr;
+	return (ptr);
+}
 int	main(int ac, char **av)
 {
 	t_game		game;
@@ -386,14 +443,15 @@ int	main(int ac, char **av)
 		load_duck_wait(&game);
 		load_duck_wait_reverse(&game);
 		load_duck_reverse(&game);
+		load_exit(&game);
 		game.tree = load_sprite(game.mlx, "textures/tree3.xpm");
-		game.sol = load_sprite(game.mlx, "textures/traps1.xpm");
 		game.collectibles_numbers = game.col_numbers;
-		printf("%i\n", game.collectibles_numbers);
+		game.col_num = game.collectibles_numbers;
+		printf("%i\n", game.col_num);
 		game.collectibles = malloc(sizeof(t_collectible) * game.collectibles_numbers);
 		for (int i = 0; i < get_line(av[1], &game); i++)
 		{
-			printf("%s", game.map[i]);
+			printf("%s", game.map_ok[i]);
 		}
 		for (int i = 0; i < game.collectibles_numbers; i++)
 			generate_random_fruit(&game, i);
