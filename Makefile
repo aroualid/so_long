@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/06 16:52:12 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/07 15:56:39 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -19,8 +19,16 @@ PARS_PATH = pars/
 NAME = so_long
 
 SRCS :=	$(addprefix $(SRCS_PATH), \
-		main.c\
-		sprite_fruit.c\
+		init_game.c \
+		key.c \
+		load_duck.c \
+		load_sprites.c \
+		main.c \
+		sprite_fruit.c \
+		update.c \
+		update_duck.c \
+		duck_move.c \
+		draw_sprite.c \
 )
 
 PARS := $(addprefix $(PARS_PATH), \
