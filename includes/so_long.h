@@ -6,16 +6,15 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/06 14:38:01 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/07 00:20:07 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
 # define WIN_H 1080
-# define WIN_W 1920 - 64
+# define WIN_W 1920
 # define SCALE 3
 
 # include "../minilibx-linux/mlx_int.h"
@@ -26,12 +25,10 @@
 # include <stdbool.h>
 # include <stdint.h>
 
-
 typedef struct s_xorshift32_state
 {
-    uint32_t    a;
-}        t_xorshift32_state;
-
+	uint32_t	a;
+}	t_xorshift32_state;
 
 typedef struct s_collectible
 {
@@ -48,7 +45,6 @@ typedef struct s_player
 	t_img	**player_sprites;
 	int		player_index;
 }	t_player;
-
 
 typedef struct s_game
 {
@@ -127,6 +123,5 @@ t_img	**load_pear(t_game *game);
 t_img	**load_strawberry(t_game *game);
 t_img	**load_watermelon(t_game *game);
 int		update_player(t_game *game);
-
 
 #endif

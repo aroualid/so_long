@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/07 11:57:05 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:04:34 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -409,6 +409,7 @@ int	main(int ac, char **av)
 	void		*p;
 
 	game = (t_game){0};
+	init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
 	if (pars(ac, av, &game) != 0)
 	{
 		i = 0;
@@ -417,8 +418,7 @@ int	main(int ac, char **av)
 		free(p);
 		game.scale = SCALE;
 		game.player.x = game.pp_x * game.scale * 32;
-		game.player.y = game.pp_y * game.scale * 32;
-		init_mlx_settings(&game, game.scale * game.max_x * 32, game.scale * game.max_y * 32);
+		game.player.y = game.pp_y * game.scale * 32; 
 		game.last_key = 1;
 		load_fruit(&game);
 		load_duck(&game);
