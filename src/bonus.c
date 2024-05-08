@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 15:31:55 by aroualid         ###   ########.fr       */
+/*   Created: 2024/05/08 14:47:03 by aroualid          #+#    #+#             */
+/*   Updated: 2024/05/08 15:52:46 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../pars/so_long_pars.h"
-#include <stdint.h>
 
 void	load_game(t_game *game)
 {
 	int	x;
 	int	y;
 
-	game->scale = SCALE;
 	x = game->scale * game->max_x * 32;
 	y = game->scale * game->max_y * 32;
-	init_mlx_settings(game, x, y);
+	game->scale = SCALE;
 	game->player.x = game->pp_x * game->scale * 32;
 	game->player.y = game->pp_y * game->scale * 32;
+	init_mlx_settings(game, x, y);
 	game->last_key = 1;
 }
 
@@ -32,6 +31,7 @@ void	load(t_game *game)
 {
 	load_fruit(game);
 	load_duck(game);
+	load_mechant(game);
 	load_duck_wait(game);
 	load_duck_wait_reverse(game);
 	load_duck_reverse(game);
@@ -39,33 +39,14 @@ void	load(t_game *game)
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }
 
-void	random_p(t_game *game)
-{		
-	void	*p;
-	int		i;
-
-	i = 0;
-	p = malloc(1);
-	game->rand.a = (uint32_t)(unsigned long) p;
-	free(p);
-	game->collectibles_numbers = game->col_numbers;
-	game->col_num = game->collectibles_numbers;
-	game->collectibles = malloc(sizeof(t_collectible) \
-		* game->collectibles_numbers);
-	while (i < game->collectibles_numbers)
-	{
-		generate_random_fruit(game, i);
-		i++;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	t_game		game;
 
 	game = (t_game){0};
-	if (pars(ac, av, &game) != 0)
+	if (pars_bonus(ac, av, &game) != 0)
 	{
+		game.bonus = 1;
 		load_game(&game);
 		load(&game);
 		random_p(&game);

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/07 15:49:30 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:45:00 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct s_xorshift32_state
 {
 	uint32_t	a;
 }	t_xorshift32_state;
+
+typedef	struct	s_wall
+{
+	int	x;
+	int	y;
+}	t_wall;
 
 typedef struct s_collectible
 {
@@ -88,9 +94,7 @@ typedef struct s_game
 	int					sprite_duck_wait;
 	t_img				**sprites_duck_wait_reverse;
 	int					sprite_duck_wait_reverse;
-
 	t_img				**sprites;
-
 	t_img				**correct_sprites;
 	t_img				**reverse_sprites;
 	t_img				**sprites_m;
@@ -112,8 +116,10 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
+	t_wall				wall;
 	int					scale;
 	int					sol_frame;
+	int					bonus;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -149,4 +155,8 @@ void		player_key_s(t_game *game);
 void		player_key_a(t_game *game);
 void		player_key_d(t_game *game);
 void		walk_animation(t_game *game);
+void		draw_enemy(t_game *game);
+void		load_game(t_game *game);
+void		random_p(t_game *game);
+bool		wall_col(t_game *game, int x2, int y2);
 #endif
