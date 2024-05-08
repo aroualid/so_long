@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:57:02 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 18:12:28 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:15:50 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ bool collide(t_wall *wall, int x, int y, t_game *game)
 {
 	return (x < wall->x + 28 * game->scale
 		&& x  + 28 * game->scale > wall->x
-		&& y < wall->y + 28 *game->scale
-		&& y + 28 * game->scale > wall->y);
+		&& y < wall->y + 26 *game->scale
+		&& y + 30 * game->scale > wall->y);
 }
 
 
