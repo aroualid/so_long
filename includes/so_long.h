@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/09 02:04:33 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:29:34 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_xorshift32_state
 {
 	uint32_t	a;
 }	t_xorshift32_state;
+
+typedef struct s_exit
+{
+	int	x;
+	int	y;
+}	t_exit;
+
 
 typedef struct s_wall
 {
@@ -56,6 +63,8 @@ typedef struct s_game
 {
 	int					col_x;
 	int					col_y;
+	int					ex_x;
+	int					ex_y;
 	int					col_numbers;
 	void				*mlx;
 	void				*win;
@@ -79,16 +88,7 @@ typedef struct s_game
 	int					map_height;
 	int					collectibles_numbers;
 	int					col_num;
-	int					bg1_scroll;
-	int					bg2_scroll;
-	int					water_scroll;
-	int					fg_scroll;
-	int					accessible_collectibles;
-	int					accessible_door;
-	int					max_jump;
 	int					frame_count;
-	bool				is_trail_drawn;
-	bool				spawn_enemy;
 	t_img				*screen;
 	t_img				**sprites_duck_wait;
 	int					sprite_duck_wait;
@@ -116,7 +116,8 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
-	t_wall				wall;
+	t_exit			exit;
+	t_wall			wall;
 	int					scale;
 	int					sol_frame;
 	int					bonus;
@@ -159,4 +160,5 @@ void		draw_enemy(t_game *game);
 void		load_game(t_game *game);
 void		random_p(t_game *game);
 bool		wall_col(t_game *game, int x2, int y2);
+
 #endif

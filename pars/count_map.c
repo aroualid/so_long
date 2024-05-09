@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:03:53 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 20:19:53 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 15:41:58 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ int	count_e(char **ptr, t_game *game)
 		while (str[j] != '\n')
 		{
 			if (str[j] == 'E')
+			{
+				game->ex_x = i;
+				game->ex_y = j;
 				e++;
+			}
 			j++;
 		}
 		i++;
@@ -117,7 +121,7 @@ int	count_element_ff(char **file, t_game *game)
 	int	p;
 
 	c = count_c_ff(file, game);
-	e = count_e(file, game);
+	e = count_e_ff(file, game);
 	p = count_p_ff(file, game);
 	if (c >= 1 || e == 1 || p == 1)
 		return (0);

@@ -6,11 +6,29 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 17:45:56 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:23:41 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	win_game(t_game *game)
+{
+	t_player	*play;
+	int			x_ex;
+	int			y_ex;
+	int			scale;
+
+	scale = 32 * game->scale;
+	play = &game->player;
+	y_ex = play->y + 16 * game->scale;
+	x_ex = play->x + 16 * game->scale;
+	if (game->map_ok[y_ex / scale][x_ex / scale] == 'E')
+	{
+		if(game->col_num == 0 && game->sol_index >= 3)
+			mlx_loop_end(game->mlx);
+	}
+}
 
 void	collect_fruit(t_game *game)
 {
@@ -67,6 +85,7 @@ int	update_player(t_game *game)
 		&& game->key_d != 1 && game->key_a != 1)
 		duck_wait(game);
 	collect_fruit(game);
+	win_game(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);
 	return (0);
 }

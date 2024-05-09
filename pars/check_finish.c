@@ -6,11 +6,38 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:43:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/04 19:18:46 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 15:41:22 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
+
+int	count_e_ff(char **ptr, t_game *game)
+{
+	int		e;
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	e = 0;
+	i = 0;
+	while (i < game->max_y)
+	{
+		str = ptr[i];
+		while (str[j] != '\n')
+		{
+			if (str[j] == 'E')
+			{
+				e++;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (e);
+}
 
 int	first_last_wall(char **ptr, t_game *game)
 {
