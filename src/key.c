@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:52:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/07 14:52:33 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 02:06:49 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	key_pressed(int keycode, t_game *game)
 		game->last_key = 2;
 	}
 	if (keycode == 'd' || keycode == XK_Right)
-	{	
+	{
 		game->key_d = 1;
 		game->last_key = 1;
 	}

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 17:45:00 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 02:04:33 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_xorshift32_state
 	uint32_t	a;
 }	t_xorshift32_state;
 
-typedef	struct	s_wall
+typedef struct s_wall
 {
 	int	x;
 	int	y;

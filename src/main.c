@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 15:31:55 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/09 02:06:38 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	load(t_game *game)
 }
 
 void	random_p(t_game *game)
-{		
+{
 	void	*p;
 	int		i;
 
