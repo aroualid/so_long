@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/09 16:27:02 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:52:09 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	exit_animation(t_game *game, int y, int x)
 
 	x_scale = x * 32 * game->scale;
 	y_scale = y * 32 * game->scale;
-	draw_sprite(game, game->sol[game->sol_index], x_scale, y_scale);
-	if (game->sol_frame % 96 / game->scale == 0 && game->sol_index < 3)
+	if (game->sol_frame % 96  == 0 && game->sol_index < 3)
 	{
 		game->sol_index++;
 	}
+	draw_sprite(game, game->sol[game->sol_index], x_scale, y_scale);
 }
 
 void	draw_enemy(t_game *game)
