@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:57:02 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/09 16:15:01 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:45:52 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	draw_wall(t_game *game, int y, int x)
 
 bool	collide(t_wall *wall, int x, int y, t_game *game)
 {
-	return (x < wall->x + 28 * game->scale
-		&& x + 28 * game->scale > wall->x
-		&& y < wall->y + 26 * game->scale
-		&& y + 30 * game->scale > wall->y);
+	return (x < wall->x + 27 * game->scale
+		&& x + 27 * game->scale > wall->x
+		&& y < wall->y + 25 * game->scale
+		&& y + 29 * game->scale > wall->y);
 }
 
 int	draw_fruit(t_game *game, int y, int x, int collectible_number)

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 13:02:20 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:46:33 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	player_key_d(t_game *game)
 		game->player.x += game->scale * 2;
 	else
 		game->player.x += game->scale;
+
 }
 
 void	walk_animation(t_game *game)
