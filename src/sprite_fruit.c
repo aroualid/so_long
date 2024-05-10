@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:24:56 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/07 00:21:54 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:05:08 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_img	**load_apple(t_game *game)
 	t_img	**ptr;
 
 	ptr = malloc(sizeof(t_img *) * 2);
-	ptr[0] = load_sprite(game->mlx, "textures/apple_1.xpm");
-	ptr[1] = load_sprite(game->mlx, "textures/apple_2.xpm");
+	ptr[0] = load_sprite(game->mlx, "textures/orange_1.xpm");
+	ptr[1] = load_sprite(game->mlx, "textures/orange_2.xpm");
 	game->sprites_apple = ptr;
 	return (ptr);
 }

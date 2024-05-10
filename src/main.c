@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/09 02:06:38 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:55:40 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	load_game(t_game *game)
 	int	x;
 	int	y;
 
-	game->scale = SCALE;
+	game->scale = 1920 / (game->max_x * 32);
 	x = game->scale * game->max_x * 32;
 	y = game->scale * game->max_y * 32;
 	init_mlx_settings(game, x, y);
