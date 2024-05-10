@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:57:02 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 13:45:52 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:08:16 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	draw_tree(t_game *game)
 		{
 			if (game->map_ok[y][x] == 'V')
 				collectible_number++;
-			if (game->map[y][x] == 'X' || game->map[y][x] == '1')
+			if (game->map[y][x] == 'X' || game->map[y][x] == '1' 
+				|| game->map_ok[y][x] == '0')
 				draw_sol(game, y, x);
 			if (game->map_ok[y][x] == '1')
 				draw_wall(game, y, x);

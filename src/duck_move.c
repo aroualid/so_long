@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 13:46:33 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:11:28 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	player_key_w(t_game *game)
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
+	{
 		game->player.y -= game->scale * 2;
+	}
 	else
 		game->player.y -= game->scale;
 }
@@ -37,7 +39,10 @@ void	player_key_s(t_game *game)
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
+	{
+		duck_space(game);
 		game->player.y += game->scale * 2;
+	}
 	else
 		game->player.y += game->scale;
 }
@@ -49,7 +54,9 @@ void	player_key_a(t_game *game)
 		return ;
 	game->sprites = game->reverse_sprites;
 	if (game->key_space)
+	{
 		game->player.x -= game->scale * 2;
+	}
 	else
 		game->player.x -= game->scale;
 }
@@ -61,7 +68,9 @@ void	player_key_d(t_game *game)
 		return ;
 	game->sprites = game->correct_sprites;
 	if (game->key_space)
+	{
 		game->player.x += game->scale * 2;
+	}
 	else
 		game->player.x += game->scale;
 

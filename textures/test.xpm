@@ -1,0 +1,30 @@
+/* XPM */
+static char *test[] = {
+/* columns rows colors chars-per-pixel */
+"200 20 4 1 ",
+"  c black",
+". c #AE411A",
+"X c #D4A71F",
+"o c None",
+/* pixels */
+"oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+"oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+"            oooooooo              oooooo              oooooo              oooooooooooooooooooooooooo              oooooo              oooooo        oo        oo              oooooo              oooooo",
+"            oooooooo              oooooo              oooooo              oooooooooooooooooooooooooo              oooooo              oooooo        oo        oo              oooooo              oooooo",
+"  XXXXXXXX    oooooo  XXXX  XXXX  oooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo  XXXX      XXXX  oo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo",
+"  XXXXXXXX    oooooo  XXXX  XXXX  oooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo  XXXX      XXXX  oo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo",
+"  XXXX..XXXX  oooooo  XXXX  XXXX  oooooo  XXXX......  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXX..XXXX  oooooo  XXXX..XXXX  oooooo  XXXX  XX  XXXX  oo  XXXX......  oooooo  XXXX..XXXX  oooooo",
+"  XXXX..XXXX  oooooo  XXXX  XXXX  oooooo  XXXX......  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXX..XXXX  oooooo  XXXX..XXXX  oooooo  XXXX  XX  XXXX  oo  XXXX......  oooooo  XXXX..XXXX  oooooo",
+"  XXXX  XXXX  oooooo  XXXX  XXXX  oooooo  XXXX        oooooo  XXXXXXXX..  oooooooooooooooooooooooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooo  XXXXXXXXXXXXXX  oo  XXXXXXXX    oooooo  XXXXXXXX..  oooooo",
+"  XXXX  XXXX  oooooo  XXXX  XXXX  oooooo  XXXX        oooooo  XXXXXXXX..  oooooooooooooooooooooooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooo  XXXXXXXXXXXXXX  oo  XXXXXXXX    oooooo  XXXXXXXX..  oooooo",
+"  XXXX  XXXX  oooooo  XXXX  XXXX  oooooo  XXXX        oooooo  XXXX..XXXX  oooooooooooooooooooooooooo  XXXX......  oooooo  XXXX  XXXX  oooooo  XXXXXX..XXXXXX  oo  XXXX....    oooooo  XXXX..XXXX  oooooo",
+"  XXXX  XXXX  oooooo  XXXX  XXXX  oooooo  XXXX        oooooo  XXXX..XXXX  oooooooooooooooooooooooooo  XXXX......  oooooo  XXXX  XXXX  oooooo  XXXXXX..XXXXXX  oo  XXXX....    oooooo  XXXX..XXXX  oooooo",
+"  XXXXXXXX..  oooooo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXX        oooooo  XXXXXXXXXX  oooooo  XXXX..  ..XXXX  oo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooo",
+"  XXXXXXXX..  oooooo  XXXXXXXXXX  oooooo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooooooooooooooooooooooo  XXXX        oooooo  XXXXXXXXXX  oooooo  XXXX..  ..XXXX  oo  XXXXXXXXXX  oooooo  XXXX  XXXX  oooooo",
+"  ........    oooooo  ..........  oooooo  ..........  oooooo  ....  ....  oooooooooooooooooooooooooo  ....  oooooooooooo  ..........  oooooo  ....      ....  oo  ..........  oooooo  ....  ....  oooooo",
+"  ........    oooooo  ..........  oooooo  ..........  oooooo  ....  ....  oooooooooooooooooooooooooo  ....  oooooooooooo  ..........  oooooo  ....      ....  oo  ..........  oooooo  ....  ....  oooooo",
+"            oooooooo              oooooo              oooooo              oooooooooooooooooooooooooo        oooooooooooo              oooooo        oo        oo              oooooo              oooooo",
+"            oooooooo              oooooo              oooooo              oooooooooooooooooooooooooo        oooooooooooo              oooooo        oo        oo              oooooo              oooooo",
+"oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+"oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+};

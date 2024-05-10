@@ -1,0 +1,30 @@
+/* XPM */
+static char *D_1[] = {
+/* columns rows colors chars-per-pixel */
+"20 20 4 1 ",
+"  c black",
+". c #AE411A",
+"X c #D4A71F",
+"o c None",
+/* pixels */
+"oooooooooooooooooooo",
+"oooooooooooooooooooo",
+"            oooooooo",
+"            oooooooo",
+"  XXXXXXXX    oooooo",
+"  XXXXXXXX    oooooo",
+"  XXXX..XXXX  oooooo",
+"  XXXX..XXXX  oooooo",
+"  XXXX  XXXX  oooooo",
+"  XXXX  XXXX  oooooo",
+"  XXXX  XXXX  oooooo",
+"  XXXX  XXXX  oooooo",
+"  XXXXXXXX..  oooooo",
+"  XXXXXXXX..  oooooo",
+"  ........    oooooo",
+"  ........    oooooo",
+"            oooooooo",
+"            oooooooo",
+"oooooooooooooooooooo",
+"oooooooooooooooooooo"
+};

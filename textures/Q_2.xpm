@@ -1,0 +1,23 @@
+/* XPM */
+static char *Q_2[] = {
+/* columns rows colors chars-per-pixel */
+"10 10 7 1 ",
+"  c black",
+". c #AE411A",
+"X c #BF6B1B",
+"o c #CC8A1E",
+"O c #D4A71F",
+"+ c #DDD021",
+"@ c None",
+/* pixels */
+"@@@@@@@@@@",
+"       @@@",
+" +++++ @@@",
+" OO.OO @@@",
+" OO OO @@@",
+" oo oo @@@",
+" ooooo @@@",
+" ..XX. @@@",
+"   ..  @@@",
+"@@    @@@@"
+};

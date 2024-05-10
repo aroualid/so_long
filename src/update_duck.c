@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 10:33:39 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:11:19 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	update_player(t_game *game)
 	else if (game->key_w != 1 && game->key_s != 1
 		&& game->key_d != 1 && game->key_a != 1)
 		duck_wait(game);
+	if (game->key_space)
+		duck_space(game);
 	collect_fruit(game);
 	win_game(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);

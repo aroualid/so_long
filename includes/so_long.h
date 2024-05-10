@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 11:32:20 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:04:22 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_exit
 	int	x;
 	int	y;
 }	t_exit;
-
 
 typedef struct s_wall
 {
@@ -121,6 +120,11 @@ typedef struct s_game
 	int					scale;
 	int					sol_frame;
 	int					bonus;
+	t_img				**font_1;
+	t_img				**font_2;
+	t_img				***font;
+	t_img				**font_p;
+	int					font_index;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -160,5 +164,6 @@ void		draw_enemy(t_game *game);
 void		load_game(t_game *game);
 void		random_p(t_game *game);
 bool		wall_col(t_game *game, int x2, int y2);
-
+t_img		**load_font_1(t_game *game);
+void		duck_space(t_game *game);
 #endif

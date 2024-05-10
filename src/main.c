@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 14:01:50 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:51:34 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	load(t_game *game)
 	load_duck_wait_reverse(game);
 	load_duck_reverse(game);
 	load_exit(game);
+	load_font_1(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }
 
@@ -69,6 +70,8 @@ int	main(int ac, char **av)
 	game = (t_game){0};
 	if (pars(ac, av, &game) != 0)
 	{
+		if (game.max_y > 30 || game.max_x >= 60)
+			return (ft_printf("%s\n", "INVALID MAP"));
 		load_game(&game);
 		load(&game);
 		random_p(&game);
