@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/11 15:22:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:07:41 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ typedef struct s_game
 	t_collectible		*collectibles;
 	t_player			player;
 	t_xorshift32_state	rand;
-	t_exit			exit;
-	t_wall			wall;
+	t_exit				exit;
+	t_wall				wall;
 	int					scale;
 	int					sol_frame;
 	int					bonus;

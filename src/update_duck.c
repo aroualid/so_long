@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 18:11:19 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:26:07 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int	update_player(t_game *game)
 		walk_animation(game);
 	if (game->key_w && play->y >= 0)
 		player_key_w(game);
-	if (game->key_s && play->y <= game->scale * game->max_y * 32 - 32 * SCALE)
+	if (game->key_s)
 		player_key_s(game);
 	if (game->key_a && play->x >= 0)
 		player_key_a(game);
-	if (game->key_d && play->x <= game->scale * game->max_x * 32 - 32 * SCALE)
+	if (game->key_d)
 		player_key_d(game);
 	else if (game->key_w != 1 && game->key_s != 1
 		&& game->key_d != 1 && game->key_a != 1)
