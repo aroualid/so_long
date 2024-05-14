@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/13 18:28:27 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:03:50 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void	load_game(t_game *game)
 	int	x;
 	int	y;
 
-	if ((1920 / (game->max_x * 32)) - (1080 / (game->max_y * 32)) > 0)
-		game->scale = 1080 / (game->max_y * 32);
-	else
-		game->scale = 1920 / (game->max_x * 32);
 	x = game->scale * game->max_x * 32;
 	y = game->scale * game->max_y * 32;
 	init_mlx_settings(game, x, y);
@@ -70,7 +66,11 @@ int	main(int ac, char **av)
 	game = (t_game){0};
 	if (pars(ac, av, &game) != 0)
 	{
-		if (game.max_y > 30 || game.max_x >= 60)
+		if ((1920 / (game.max_x * 32)) - (1080 / (game.max_y * 32)) > 0)
+			game.scale = 1080 / (game.max_y * 32);
+		else
+			game.scale = 1920 / (game.max_x * 32);
+		if (game.max_y > 30 || game.max_x >= 60 || game.scale >= 5)
 			return (ft_printf("%s\n", "INVALID MAP"));
 		load_game(&game);
 		load(&game);
