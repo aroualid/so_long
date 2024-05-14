@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:57:02 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 13:55:46 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:37:00 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	wall_col(t_game *game, int x2, int y2)
 	return (false);
 }
 
-void	draw_tree(t_game *game)
+void	draw_all(t_game *game)
 {
 	int	x;
 	int	y;

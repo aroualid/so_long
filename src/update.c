@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 10:52:09 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:35:50 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	update(t_game *game)
 	game->nb_frames++;
 	clear_sprites(game);
 	detect_key(game);
-	draw_tree(game);
+	draw_all(game);
 	while (i < game->collectibles_numbers)
 	{
 		col = &game->collectibles[i];

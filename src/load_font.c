@@ -6,13 +6,13 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:23:19 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/10 17:09:14 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:29:53 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_img	**load_font_1(t_game *game)
+void	load_font_1(t_game *game)
 {
 	t_img	**ptr;
 
@@ -20,7 +20,6 @@ t_img	**load_font_1(t_game *game)
 	ptr[0] = load_sprite(game->mlx, "textures/test.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/test2.xpm");
 	game->font_1  = ptr;
-	return(ptr);
 }
 
 void	duck_space(t_game *game)
