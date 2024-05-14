@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/13 18:26:07 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:30:09 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	collect_fruit(t_game *game)
 	if (game->map_ok[y_fruit / scale][x_fruit / scale] == 'C')
 	{
 		game->col_num--;
-		printf("%i\n", game->col_num);
 		game->map_ok[y_fruit / scale][x_fruit / scale] = 'V';
 	}
 	if (game->col_num == 0)
