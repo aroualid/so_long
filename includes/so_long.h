@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 18:28:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:56:41 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ typedef struct s_game
 	int					bonus;
 	t_img				**font_1;
 	int					font_index;
-	int					j;
+	int					walk;
+	int					walkdiv;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -131,7 +132,7 @@ t_img		**load_lemon(t_game *game);
 t_img		**load_pear(t_game *game);
 t_img		**load_strawberry(t_game *game);
 t_img		**load_watermelon(t_game *game);
-int			update_player(t_game *game);
+void		update_player(t_game *game);
 void		draw_sprite(t_game *game, t_img *img, int x, int y);
 int			close_game(t_game *game);
 int			key_pressed(int keycode, t_game *game);
@@ -139,7 +140,6 @@ int			key_released(int keycode, t_game *game);
 void		detect_key(t_game *game);
 void		clear_sprites(t_game *game);
 void		draw_exit(t_game *game);
-int			update_player(t_game *game);
 uint32_t	xorshift32(t_xorshift32_state *state);
 void		draw_all(t_game *game);
 int			update(t_game *game);
@@ -163,4 +163,5 @@ void		random_p(t_game *game);
 bool		wall_col(t_game *game, int x2, int y2);
 void		load_font_1(t_game *game);
 void		duck_space(t_game *game);
+void		free_map(t_game *game);
 #endif

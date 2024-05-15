@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 19:01:07 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:25:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,15 @@ void	free_all(t_game *game)
 	free_sprite(game->sprites_duck_wait_reverse, 6, game);
 	//free_sprite(game->sprites_duck_wait, game->sprite_duck_wait, game);
 	free_sprite(game->sprites_duck_wait, 6, game);
-	free_sprite(game->sprites, 6, game);
+	//free_sprite(game->sprites, 6, game);
 	free_sprite(game->correct_sprites, 6, game);
 	free_sprite(game->reverse_sprites, 6, game);
 	free_sprite(game->font_1, 2, game);
 	free_fruit(game);
 	if (game->collectibles)
 	{
-		game->collectibles = NULL;
 		free(game->collectibles);
+		game->collectibles = NULL;
 	}
 	mlx_destroy_image(game->mlx, game->tree);
 	mlx_destroy_window(game->mlx, game->win);
@@ -123,7 +123,6 @@ int	main(int ac, char **av)
 	game = (t_game){0};
 	if (pars(ac, av, &game) != 0)
 	{
-		game.j = 0;
 		if ((1920 / (game.max_x * 32)) - (1080 / (game.max_y * 32)) > 0)
 			game.scale = 1080 / (game.max_y * 32);
 		else
@@ -140,4 +139,6 @@ int	main(int ac, char **av)
 		mlx_loop(game.mlx);
 		free_all(&game);
 	}
+	free_map(&game);
+
 }

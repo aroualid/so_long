@@ -6,25 +6,26 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 14:01:20 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:28:05 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_pars.h"
 
-void	ft_free(char **tav)
+void	free__map(char **ptr, t_game *game)
 {
 	int	i;
 
 	i = 0;
-	if (tav != NULL)
+	if (ptr != NULL)
 	{
-		while (tav[i] != NULL)
+		while (i < game->max_y)
 		{
-			free(tav[i]);
+			free(ptr[i]);
+			ptr[i] = NULL;
 			i++;
 		}
-		free(tav);
+		free(ptr);
 	}
 }
 
@@ -44,13 +45,13 @@ int	get_line(char *file, t_game *game)
 		str = get_next_line(infile);
 	}
 	close (infile);
+	free(str);
 	game->max_y = i;
 	return (i);
 }
 
 char	**get_each_line(char *file, t_game *game)
 {
-	int		i;
 	char	**ptr;
 	int		j;
 	char	*str;
@@ -59,18 +60,19 @@ char	**get_each_line(char *file, t_game *game)
 	infile = open(file, O_RDONLY);
 	str = get_next_line(infile);
 	j = 0;
-	i = game->max_y;
-	ptr = ft_calloc(sizeof(char **), i);
-	game->map = ft_calloc(sizeof(char **), i);
-	game->map_ok = ft_calloc(sizeof(char **), i);
-	while (j < i)
+	ptr = ft_calloc(sizeof(char **), game->max_y);
+	game->map = ft_calloc(sizeof(char **), game->max_y);
+	game->map_ok = ft_calloc(sizeof(char **), game->max_y);
+	while (j < game->max_y)
 	{
 		ptr[j] = ft_strdup(str);
 		game->map[j] = ft_strdup(str);
 		game->map_ok[j] = ft_strdup(str);
+		free(str);
 		str = get_next_line(infile);
 		j++;
 	}
+
 	close (infile);
 	return (ptr);
 }
@@ -98,5 +100,6 @@ int	get_len_line(char *file, t_game *game)
 			return (0);
 	}
 	game->max_x = res;
+	free__map(ptr, game);
 	return (1);
 }

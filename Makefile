@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/14 14:16:14 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/15 09:24:05 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -30,6 +30,7 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 		duck_move.c \
 		draw_sprite.c \
 		load_font.c \
+		free.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \

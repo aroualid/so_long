@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 13:30:09 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:11:32 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	duck_wait(t_game *game)
 	}
 }
 
-int	update_player(t_game *game)
+void	update_player(t_game *game)
 {
 	t_player	*play;
 
@@ -88,5 +88,6 @@ int	update_player(t_game *game)
 	collect_fruit(game);
 	win_game(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);
-	return (0);
+	if (game->walk % 10 == 0 && game->walk != 0)
+		printf("nombre de pas = %i \n", game->walk / 10);
 }

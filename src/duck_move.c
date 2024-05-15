@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 12:16:48 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:14:41 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	player_key_w(t_game *game)
 		game->player.y -= game->scale * (5 - game->scale);
 	else
 		game->player.y -= game->scale;
+	if (game->key_w == 1 && game->key_s != 1)
+		game->walk++;
 }
 
 void	player_key_s(t_game *game)
@@ -46,6 +48,8 @@ void	player_key_s(t_game *game)
 		game->player.y += game->scale * (5 - game->scale);
 	else
 		game->player.y += game->scale;
+	if (game->key_w != 1 && game->key_s == 1)
+		game->walk++;
 }
 
 void	player_key_a(t_game *game)
@@ -61,6 +65,8 @@ void	player_key_a(t_game *game)
 		game->player.x -= game->scale * (5 - game->scale);
 	else
 		game->player.x -= game->scale;
+	if (game->key_a == 1 && game->key_d != 1)
+		game->walk++;
 }
 
 void	player_key_d(t_game *game)
@@ -76,6 +82,8 @@ void	player_key_d(t_game *game)
 		game->player.x += game->scale * (5 - game->scale);
 	else
 		game->player.x += game->scale;
+	if (game->key_d == 1 && game->key_a != 1)
+		game->walk++;
 }
 
 void	walk_animation(t_game *game)
