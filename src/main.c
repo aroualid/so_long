@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 11:25:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:44:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	load(t_game *game)
 	load_duck_reverse(game);
 	load_exit(game);
 	load_font_1(game);
+	load_num(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }
 
@@ -103,6 +104,7 @@ void	free_all(t_game *game)
 	free_sprite(game->correct_sprites, 6, game);
 	free_sprite(game->reverse_sprites, 6, game);
 	free_sprite(game->font_1, 2, game);
+	free_sprite(game->num, 10, game);
 	free_fruit(game);
 	if (game->collectibles)
 	{

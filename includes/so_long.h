@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 11:56:41 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:03:54 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,9 @@ typedef struct s_game
 	t_img				**font_1;
 	int					font_index;
 	int					walk;
-	int					walkdiv;
+	t_img				**num;
+	int					num_index;
+	int					num_x;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -164,4 +166,6 @@ bool		wall_col(t_game *game, int x2, int y2);
 void		load_font_1(t_game *game);
 void		duck_space(t_game *game);
 void		free_map(t_game *game);
+void		load_num(t_game *game);
+void		ft_put_nbr_to_win(t_game *game, int walk, int x);
 #endif

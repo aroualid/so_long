@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/14 15:35:50 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:42:51 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ void	draw_exit(t_game *game)
 	}
 }
 
+
+/*static void	print_steps(t_game *game)
+{
+	char	*move;
+
+	move = ft_itoa(game->walk / 20);
+	mlx_string_put(game->mlx, game->win, 10 * game->scale,
+		20 * game->scale, 0xFFFF00, "Nb de pas : ");
+	mlx_string_put(game->mlx, game->win, 40 * game->scale,
+		20 * game->scale, 0xFFFFF00, move);
+}
+
+*/
+
 int	update(t_game *game)
 {
 	t_collectible	*col;
@@ -78,8 +92,9 @@ int	update(t_game *game)
 		i++;
 	}
 	update_player(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
 	if (game->bonus == 1)
 		draw_enemy(game);
+	ft_put_nbr_to_win(game, game->walk / 20, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
 	return (0);
 }
