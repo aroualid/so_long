@@ -1,19 +1,29 @@
 /* XPM */
 static char *_[] = {
 /* columns rows colors chars-per-pixel */
-"10 10 3 1 ",
+"20 20 3 1 ",
 "  c black",
 ". c white",
 "X c None",
 /* pixels */
-"XXXXXXXXXX",
-"       XXX",
-" ..... XXX",
-" ..    XXX",
-" ..... XXX",
-" .. .. XXX",
-" ..... XXX",
-"       XXX",
-"XXXXXXXXXX",
-"XXXXXXXXXX"
+"XXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX",
+"              XXXXXX",
+"              XXXXXX",
+"  ..........  XXXXXX",
+"  ..........  XXXXXX",
+"  ....        XXXXXX",
+"  ....        XXXXXX",
+"  ..........  XXXXXX",
+"  ..........  XXXXXX",
+"  ....  ....  XXXXXX",
+"  ....  ....  XXXXXX",
+"  ..........  XXXXXX",
+"  ..........  XXXXXX",
+"              XXXXXX",
+"              XXXXXX",
+"XXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXX"
 };

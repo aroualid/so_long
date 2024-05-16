@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 15:03:54 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:44:19 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_player
 
 typedef struct s_game
 {
+	int					x;
+	int					y;
 	int					col_x;
 	int					col_y;
 	int					ex_x;
@@ -168,4 +170,5 @@ void		duck_space(t_game *game);
 void		free_map(t_game *game);
 void		load_num(t_game *game);
 void		ft_put_nbr_to_win(t_game *game, int walk, int x);
+void		draw_text(t_game *game, t_img *img, int x, int y);
 #endif

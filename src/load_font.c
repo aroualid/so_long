@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:23:19 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 15:40:45 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:10:25 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,24 @@ void	load_num(t_game *game)
 void	ft_put_nbr_to_win(t_game *game, int walk, int x)
 {
 	if (walk < 10)
-		draw_sprite(game, game->num[walk], x + (game->scale * game->max_x * 32) - 10 * game->scale, 20);
+		draw_text(game, game->num[walk], x + (game->scale * game->max_x * 32) - 20 * 3, 10);
 	else if (walk < 100)
     {
-        ft_put_nbr_to_win(game, walk / 10, x - 20 * game->scale);
-        ft_put_nbr_to_win(game, walk % 10, x - 10 * game->scale);
+        ft_put_nbr_to_win(game, walk / 10, x - 20 * 3);
+        ft_put_nbr_to_win(game, walk % 10, x - 1 * 3);
     }
 	else if (walk < 1000)
 	{
-		ft_put_nbr_to_win(game, walk / 100, x - 30 * game->scale);
-		ft_put_nbr_to_win(game, (walk % 100) / 10, x - 20 * game->scale);
-		ft_put_nbr_to_win(game, walk % 10, x - 10 * game->scale);
+		ft_put_nbr_to_win(game, walk / 100, x - 40 * 3);
+		ft_put_nbr_to_win(game, (walk % 100) / 10, x - 20 * 3);
+		ft_put_nbr_to_win(game, walk % 10, x - 1 * 3);
 	}
 	else
     {
-        ft_put_nbr_to_win(game, walk / 1000, x - 40 * game->scale);
-        ft_put_nbr_to_win(game, (walk % 1000) / 100, x - 30 * game->scale);
-        ft_put_nbr_to_win(game, (walk % 100) / 10, x - 20 * game->scale);
-        ft_put_nbr_to_win(game, walk % 10, x - 10 * game->scale);
+        ft_put_nbr_to_win(game, walk / 1000, x - 60 * 3);
+        ft_put_nbr_to_win(game, (walk % 1000) / 100, x - 40 * 3);
+        ft_put_nbr_to_win(game, (walk % 100) / 10, x - 20 * 3);
+        ft_put_nbr_to_win(game, walk % 10, x - 1 * 3);
     }
 }
 
@@ -70,11 +70,11 @@ void	duck_space(t_game *game)
 {
 	int x;
 
-	x = ((game->scale * game->max_x * 32) / 2) - 75 * game->scale;
+	x = ((game->x) / 2) - 400;
 	if (game->nb_frames % 16 == 0)
 	{
 		game->font_index++;
 		game->font_index = game->font_index%2;
 	}
-	draw_sprite(game, game->font_1[game->font_index], x, 5);
+	draw_text(game, game->font_1[game->font_index], x, 10);
 }

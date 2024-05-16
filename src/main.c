@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 15:44:17 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:44:38 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	load_game(t_game *game)
 
 	x = game->scale * game->max_x * 32;
 	y = game->scale * game->max_y * 32;
+	game->x = x;
+	game->y = y;
 	init_mlx_settings(game, x, y);
 	game->player.x = game->pp_x * game->scale * 32;
 	game->player.y = game->pp_y * game->scale * 32;

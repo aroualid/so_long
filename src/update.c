@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 15:42:51 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:03:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	update(t_game *game)
 	game->nb_frames++;
 	clear_sprites(game);
 	detect_key(game);
-	draw_all(game);
 	while (i < game->collectibles_numbers)
 	{
 		col = &game->collectibles[i];
@@ -94,7 +93,6 @@ int	update(t_game *game)
 	update_player(game);
 	if (game->bonus == 1)
 		draw_enemy(game);
-	ft_put_nbr_to_win(game, game->walk / 20, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
 	return (0);
 }
