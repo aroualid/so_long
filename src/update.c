@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/16 18:03:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:39:25 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	exit_animation(t_game *game, int y, int x)
 
 void	draw_enemy(t_game *game)
 {
-	draw_sprite(game, game->sprites_m[game->sprite_mechant], 100, 100);
+	draw_sprite(game, game->sprites_m[game->sprite_mechant], game->ennemy.x , game->ennemy.y);
 	if (game->nb_frames % 64 == 0)
 	{
 		game->sprite_mechant++;

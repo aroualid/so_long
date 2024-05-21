@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:13:51 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/08 15:29:00 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:50:31 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,122 @@ int	check_good_carac_bonus(char **ptr, t_game *game)
 		j = 0;
 		i++;
 	}
+	return (1);
+}
+
+int	count_2(char **ptr, t_game *game)
+{
+	int		e;
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	e = 0;
+	i = 0;
+	while (i < game->max_y)
+	{
+		str = ptr[i];
+		while (str[j] != '\n')
+		{
+			if (str[j] == '2')
+			{
+				e++;
+				game->ennemy.x = j;
+				game->ennemy.y = i;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (e);
+}
+
+int	count_2_ff(char **ptr, t_game *game)
+{
+	int		e;
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	e = 0;
+	i = 0;
+	while (i < game->max_y)
+	{
+		str = ptr[i];
+		while (str[j] != '\n')
+		{
+			if (str[j] == '2')
+			{
+				e++;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (e);
+}
+
+
+int	count_element_bonus(char **file, t_game *game)
+{
+	int	c;
+	int	e;
+	int	p;
+	int	n;
+
+	n = count_2(file, game);
+	c = count_c(file, game);
+	e = count_e(file, game);
+	p = count_p(file, game);
+	if (c >= 1 && e == 1 && p == 1 && n == 1
+		&& (first_last_wall(file, game) == 1)
+		&& (check_first_last_coll(file, game) == 1)
+		&& check_good_carac_bonus(file, game) == 1)
+		return (1);
+	else
+		return (0);
+}
+
+int	count_element_ff_bonus(char **file, t_game *game)
+{
+	int	c;
+	int	e;
+	int	p;
+	int	n;
+
+	c = count_c_ff(file, game);
+	e = count_e_ff(file, game);
+	p = count_p_ff(file, game);
+	n = count_2_ff(file, game);
+	if (c >= 1 || e == 1 || p == 1 || n == 1)
+		return (0);
+	else
+		return (1);
+}
+
+int	pars_bonus(int ac, char **av, t_game *game)
+{
+	if (ac == 2)
+	{
+		if (check_file (av[1]) == 0)
+			return (ft_printf ("ERROR\n"), 0);
+		else if (check_file (av[1]) == 1
+			&& get_len_line(av[1], game) != 0
+			&& count_element_bonus(game->map, game) == 1)
+		{
+			flood_fill(game, game->pp_x, game->pp_y, av[1]);
+			if (count_element_ff_bonus(game->map, game) == 0)
+				return (ft_printf("ERROR4\n"), 0);
+		}
+		else
+			return (ft_printf("ERROR3\n"), 0);
+	}
+	else
+		return (ft_printf ("ERROR2\n"), 0);
 	return (1);
 }
 

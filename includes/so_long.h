@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/17 16:47:12 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:05:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ typedef struct s_player
 	t_img	**player_sprites;
 	int		player_index;
 }	t_player;
+
+
+typedef struct s_ennemy
+{
+	int		x;
+	int		y;
+	t_img	**player_sprites;
+	int		player_index;
+}	t_ennemy;
 
 typedef struct s_game
 {
@@ -116,6 +125,7 @@ typedef struct s_game
 	t_img				***load_fruit;
 	t_collectible		*collectibles;
 	t_player			player;
+	t_ennemy			ennemy;
 	t_xorshift32_state	rand;
 	t_exit				exit;
 	t_wall				wall;
@@ -171,4 +181,8 @@ void		free_map(t_game *game);
 void		load_num(t_game *game);
 void		ft_put_nbr_to_win(t_game *game, int walk, int x);
 void		draw_text(t_game *game, t_img *img, int x, int y);
+void		free_all(t_game *game);
+void		free_sprite(t_img **ptr, int index, t_game *game);
+void		free_fruit(t_game *game);
+
 #endif
