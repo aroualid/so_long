@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 15:05:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:03:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,15 @@ typedef struct s_game
 	t_img				**num;
 	int					num_index;
 	int					num_x;
+	t_img				**w;
+	t_img				**a;
+	t_img				**s;
+	t_img				**d;
+	t_img				touch_index;
+	int					w_ind;
+	int					a_ind;
+	int					s_ind;
+	int					d_ind;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -184,5 +193,6 @@ void		draw_text(t_game *game, t_img *img, int x, int y);
 void		free_all(t_game *game);
 void		free_sprite(t_img **ptr, int index, t_game *game);
 void		free_fruit(t_game *game);
-
+void		load_touch(t_game *game);
+void		draw_touch(t_game *game, t_img *img, int x, int y);
 #endif

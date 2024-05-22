@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 15:08:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:18:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ void	duck_wait(t_game *game)
 	}
 }
 
+void	key_color(t_game *game)
+{
+	detect_key(game);
+	game->w_ind = game->key_w;
+	game->a_ind = game->key_a;
+	game->s_ind = game->key_s;
+	game->d_ind = game->key_d;
+}
+
+
 void	update_player(t_game *game)
 {
 	t_player	*play;
@@ -86,8 +96,8 @@ void	update_player(t_game *game)
 		duck_wait(game);
 	if (game->key_space)
 		duck_space(game);
+	key_color(game);
 	ft_put_nbr_to_win(game, game->walk / 20, 0);
-
 	collect_fruit(game);
 	win_game(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);

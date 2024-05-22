@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:47:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 15:10:58 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:00:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	load_game(t_game *game)
 	init_mlx_settings(game, x, y);
 	game->player.x = game->pp_x * game->scale * 32;
 	game->player.y = game->pp_y * game->scale * 32;
-	game->ennemy.x = game->ennemy.x * (game->scale * 0.8) * 32;
-	game->ennemy.y = game->ennemy.y * (game->scale * 0.8) * 32;
+	game->ennemy.x = game->ennemy.x * game->scale * 32;
+	game->ennemy.y = game->ennemy.y * game->scale * 32;
 	game->last_key = 1;
 }
 
@@ -40,6 +40,7 @@ void	load(t_game *game)
 	load_exit(game);
 	load_font_1(game);
 	load_num(game);
+	load_touch(game);
 	load_mechant(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }

@@ -6,13 +6,12 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 15:05:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:00:23 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../pars/so_long_pars.h"
-#include <stdint.h>
 
 void	load_game(t_game *game)
 {
@@ -39,6 +38,7 @@ void	load(t_game *game)
 	load_exit(game);
 	load_font_1(game);
 	load_num(game);
+	load_touch(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }
 
