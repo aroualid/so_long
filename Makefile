@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/22 11:59:49 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/27 14:40:12 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -34,6 +34,7 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 	free.c \
 	utils.c\
 	load_touch.c\
+	update_bonus.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \
@@ -59,6 +60,7 @@ SRCS_BNS := $(addprefix $(SRCS_PATH), \
 	load_font.c \
 	load_touch.c\
 	free.c \
+	update_bonus.c\
 )
 
 PARS_BNS := $(addprefix $(PARS_PATH), \

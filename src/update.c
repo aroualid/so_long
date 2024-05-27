@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 14:09:54 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:58:06 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ void	exit_animation(t_game *game, int y, int x)
 		game->sol_index++;
 	}
 	draw_sprite(game, game->sol[game->sol_index], x_scale, y_scale);
-}
-
-void	draw_enemy(t_game *game)
-{
-	draw_sprite(game, game->sprites_m[game->sprite_mechant], game->ennemy.x , game->ennemy.y);
-	if (game->nb_frames % 64 == 0)
-	{
-		game->sprite_mechant++;
-		game->sprite_mechant = game->sprite_mechant % 4;
-	}
 }
 
 void	draw_exit(t_game *game)
@@ -82,7 +72,7 @@ int	update(t_game *game)
 	draw_touch(game, game->d[game->d_ind], (81), 50);	
 	draw_touch(game, game->w[game->w_ind], (43), 10);
 	if (game->bonus == 1)
-		draw_enemy(game);
+		update_ennemy(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->screen, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 14:03:17 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:34:38 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,4 +195,5 @@ void		free_sprite(t_img **ptr, int index, t_game *game);
 void		free_fruit(t_game *game);
 void		load_touch(t_game *game);
 void		draw_touch(t_game *game, t_img *img, int x, int y);
+void		update_ennemy(t_game *game);
 #endif
