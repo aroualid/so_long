@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/27 14:41:31 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:50:39 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	player_key_w(t_game *game)
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.y -= game->scale + 1 * (5 - game->scale);
+		game->player.y -= game->scale * (5 - game->scale);
 	else
 		game->player.y -= game->scale;
 	if (game->key_w == 1 && game->key_s != 1)
@@ -45,7 +45,7 @@ void	player_key_s(t_game *game)
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.y += game->scale + 1* (5 - game->scale);
+		game->player.y += game->scale* (5 - game->scale);
 	else
 		game->player.y += game->scale;
 	if (game->key_s == 1 && game->key_w != 1)
@@ -62,7 +62,7 @@ void	player_key_a(t_game *game)
 		return ;
 	game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.x -= game->scale + 1 * (5 - game->scale);
+		game->player.x -= game->scale * (5 - game->scale);
 	else
 		game->player.x -= game->scale;
 	if (game->key_a == 1 && game->key_d != 1)
@@ -79,7 +79,7 @@ void	player_key_d(t_game *game)
 		return ;
 	game->sprites = game->correct_sprites;
 	if (game->key_space)
-		game->player.x += game->scale + 1 * (5 - game->scale);
+		game->player.x += game->scale * (5 - game->scale);
 	else
 		game->player.x += game->scale;
 	if (game->key_d == 1 && game->key_a != 1)
