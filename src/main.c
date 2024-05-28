@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 12:00:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:59:08 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,19 @@ void	load_game(t_game *game)
 	game->last_key = 1;
 }
 
-void	load(t_game *game)
+int	load(t_game *game)
 {
+	if (load_fruit(game) == 0 
+		|| load_duck(game) == 0
+		|| load_duck_wait(game) == 0
+		|| load_duck_wait_reverse(game) == 0
+		|| load_duck_reverse(game) == 0 
+		|| load_exit(game) == 0
+		|| load_font_1(game) == 0 
+		|| load_num(game) == 0
+		|| load_touch(game) == 0
+		|| load_sprite(game->mlx, "textures/tree3.xpm") == 0)
+			return (0);
 	load_fruit(game);
 	load_duck(game);
 	load_duck_wait(game);
@@ -40,6 +51,7 @@ void	load(t_game *game)
 	load_num(game);
 	load_touch(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -47,7 +59,8 @@ int	main(int ac, char **av)
 	t_game		game;
 
 	game = (t_game){0};
-	if (pars(ac, av, &game) != 0)
+	if (pars(ac, av, &game) != 0
+		&& load(&game) == 1)
 	{
 		if ((1920 / (game.max_x * 32)) - (1080 / (game.max_y * 32)) > 0)
 			game.scale = 1080 / (game.max_y * 32);
@@ -56,7 +69,6 @@ int	main(int ac, char **av)
 		if (game.max_y > 30 || game.max_x >= 60 || game.scale >= 5)
 			return (ft_printf("%s\n", "INVALID MAP"));
 		load_game(&game);
-		load(&game);
 		random_p(&game);
 		mlx_loop_hook(game.mlx, update, &game);
 		mlx_hook(game.win, KeyPress, KeyPressMask, key_pressed, &game);
@@ -66,5 +78,4 @@ int	main(int ac, char **av)
 		free_all(&game);
 	}
 	free_map(&game);
-
 }

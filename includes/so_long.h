@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/27 11:34:38 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:24:35 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_player
 	t_img	**player_sprites;
 	int		player_index;
 }	t_player;
-
 
 typedef struct s_ennemy
 {
@@ -167,14 +166,14 @@ uint32_t	xorshift32(t_xorshift32_state *state);
 void		draw_all(t_game *game);
 int			update(t_game *game);
 int			init_mlx_settings(t_game *game, int x, int y);
-void		load_duck(t_game *game);
-void		load_duck_reverse(t_game *game);
-void		load_duck_wait(t_game *game);
-void		load_duck_wait_reverse(t_game *game);
-void		load_mechant(t_game *game);
-void		load_fruit(t_game *game);
+int			load_duck(t_game *game);
+int			load_duck_reverse(t_game *game);
+int			load_duck_wait(t_game *game);
+int			load_duck_wait_reverse(t_game *game);
+int			load_mechant(t_game *game);
+int			load_fruit(t_game *game);
 void		generate_random_fruit(t_game *game, int index);
-void		load_exit(t_game *game);
+int			load_exit(t_game *game);
 void		player_key_w(t_game *game);
 void		player_key_s(t_game *game);
 void		player_key_a(t_game *game);
@@ -184,16 +183,26 @@ void		draw_enemy(t_game *game);
 void		load_game(t_game *game);
 void		random_p(t_game *game);
 bool		wall_col(t_game *game, int x2, int y2);
-void		load_font_1(t_game *game);
+int			load_font_1(t_game *game);
 void		duck_space(t_game *game);
 void		free_map(t_game *game);
-void		load_num(t_game *game);
+int			load_num(t_game *game);
 void		ft_put_nbr_to_win(t_game *game, int walk, int x);
 void		draw_text(t_game *game, t_img *img, int x, int y);
 void		free_all(t_game *game);
 void		free_sprite(t_img **ptr, int index, t_game *game);
 void		free_fruit(t_game *game);
-void		load_touch(t_game *game);
+int			load_touch(t_game *game);
 void		draw_touch(t_game *game, t_img *img, int x, int y);
 void		update_ennemy(t_game *game);
+int			draw_fruit(t_game *game, int y, int x, int collectible_number);
+bool		collide(t_wall *wall, int x, int y, t_game *game);
+void		draw_wall(t_game *game, int y, int x);
+void		draw_sol(t_game *game, int y, int x);
+void		collect_fruit(t_game *game);
+void		win_game(t_game *game);
+void		duck_wait(t_game *game);
+void		key_color(t_game *game);
+void		game_assets(t_game *game);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/15 10:28:05 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:22:20 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char	**get_each_line(char *file, t_game *game)
 		str = get_next_line(infile);
 		j++;
 	}
-
 	close (infile);
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:35:56 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 14:37:07 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:25:50 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,6 @@ int		count_e(char **ptr, t_game *game);
 int		pars(int ac, char **av, t_game *game);
 int		pars_bonus(int ac, char **av, t_game *game);
 int		check_file(char *av2);
+int		count_element_ff_bonus(char **file, t_game *game);
+int		count_element_bonus(char **file, t_game *game);
 #endif

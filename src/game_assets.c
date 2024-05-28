@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   game_assets.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:23:43 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 14:33:09 by aroualid         ###   ########.fr       */
+/*   Created: 2024/05/28 15:09:00 by aroualid          #+#    #+#             */
+/*   Updated: 2024/05/28 15:09:10 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	free_map(t_game *game)
+void	game_assets(t_game *game)
 {
-	int	i;
-
-	if (!game)
-		return ;
-	i = 0;
-	while (i < game->max_y)
-	{
-		if (game->map[i])
-		{
-			free(game->map[i]);
-			game->map[i] = NULL;
-			free(game->map_ok[i]);
-			game->map_ok[i] = NULL;
-		}
-		i++;
-	}
-	free(game->map);
-	free(game->map_ok);
+	key_color(game);
+	ft_put_nbr_to_win(game, game->walk / 20, 0);
+	collect_fruit(game);
+	win_game(game);
 }

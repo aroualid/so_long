@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 14:18:17 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:08:37 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	win_game(t_game *game)
 	x_ex = play->x + 16 * game->scale;
 	if (game->map_ok[y_ex / scale][x_ex / scale] == 'E')
 	{
-		if(game->col_num == 0 && game->sol_index >= 3)
+		if (game->col_num == 0 && game->sol_index >= 3)
 			mlx_loop_end(game->mlx);
 	}
 }
@@ -72,7 +72,6 @@ void	key_color(t_game *game)
 	game->d_ind = game->key_d;
 }
 
-
 void	update_player(t_game *game)
 {
 	t_player	*play;
@@ -96,9 +95,6 @@ void	update_player(t_game *game)
 		duck_wait(game);
 	if (game->key_space)
 		duck_space(game);
-	key_color(game);
-	ft_put_nbr_to_win(game, game->walk / 20, 0);
-	collect_fruit(game);
-	win_game(game);
+	game_assets(game);	
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);
 }

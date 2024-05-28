@@ -6,32 +6,46 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:47:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 10:29:16 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:41:03 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	load_mechant(t_game *game)
+int	load_mechant(t_game *game)
 {
 	t_img	**ptr;
-
+	int		i;
+	
+	i = 0;
 	ptr = malloc(sizeof(t_img *) * 4);
 	ptr[0] = load_sprite(game->mlx, "textures/mechant_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/mechant_2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/mechant_3.xpm");
 	ptr[3] = load_sprite(game->mlx, "textures/mechant_4.xpm");
 	game->sprites_m = ptr;
+	while (i < 4)
+	{
+		if (ptr[i] == NULL)
+			return (0);
+		i++;
+	}
+	return(1);
 }
 
-void	load_fruit(t_game *game)
+int	load_fruit(t_game *game)
 {
+	int	i;
+
+	i = 0;
 	game->load_fruit = malloc(sizeof(t_img **) * 5);
 	game->load_fruit[0] = load_apple(game);
 	game->load_fruit[1] = load_lemon(game);
 	game->load_fruit[2] = load_pear(game);
 	game->load_fruit[3] = load_strawberry(game);
 	game->load_fruit[4] = load_watermelon(game);
+	return (1);
+	
 }
 
 uint32_t	xorshift32(t_xorshift32_state *state)
@@ -56,14 +70,23 @@ void	generate_random_fruit(t_game *game, int index)
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];
 }
 
-void	load_exit(t_game *game)
+int	load_exit(t_game *game)
 {
 	t_img	**ptr;
+	int		i;
 
+	i = 0;
 	ptr = malloc(sizeof(t_img **) * 4);
 	ptr[0] = load_sprite(game->mlx, "textures/traps1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/traps2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/traps3.xpm");
 	ptr[3] = load_sprite(game->mlx, "textures/traps4.xpm");
+	while (i < 4)
+	{
+		if (ptr[i] == NULL)
+			return (0);
+		i++;
+	}
 	game->sol = ptr;
+	return (1);
 }

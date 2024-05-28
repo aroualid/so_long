@@ -6,12 +6,11 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:50:58 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/21 15:04:42 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:45:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../pars/so_long_pars.h"
 
 void	random_p(t_game *game)
 {
@@ -71,9 +70,7 @@ void	free_all(t_game *game)
 {
 	free_sprite(game->sol, 4, game);
 	free_sprite(game->sprites_duck_wait_reverse, 6, game);
-	//free_sprite(game->sprites_duck_wait, game->sprite_duck_wait, game);
 	free_sprite(game->sprites_duck_wait, 6, game);
-	//free_sprite(game->sprites, 6, game);
 	free_sprite(game->correct_sprites, 6, game);
 	free_sprite(game->reverse_sprites, 6, game);
 	free_sprite(game->font_1, 2, game);
@@ -90,5 +87,3 @@ void	free_all(t_game *game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:47:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/22 12:00:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:33:21 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	load(t_game *game)
 	load_mechant(game);
 	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
 }
-
-
 
 int	main(int ac, char **av)
 {

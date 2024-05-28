@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/27 14:40:12 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/28 16:29:29 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -35,6 +35,9 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 	utils.c\
 	load_touch.c\
 	update_bonus.c\
+	game_assets.c\
+	draw.c\
+	draw_all.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \
@@ -61,6 +64,9 @@ SRCS_BNS := $(addprefix $(SRCS_PATH), \
 	load_touch.c\
 	free.c \
 	update_bonus.c\
+	game_assets.c\
+	draw.c\
+	draw_all.c\
 )
 
 PARS_BNS := $(addprefix $(PARS_PATH), \
@@ -70,8 +76,8 @@ PARS_BNS := $(addprefix $(PARS_PATH), \
 	check_map.c \
 	check_file_name.c \
 	get_next_line.c \
+	count_bonus.c\
 )
-
 
 OBJS = $(SRCS:%.c=%.o) $(PARS:%.c=%.o)
 

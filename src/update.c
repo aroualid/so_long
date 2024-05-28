@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:53:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/27 11:58:06 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:09:34 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	exit_animation(t_game *game, int y, int x)
 
 	x_scale = x * 32 * game->scale;
 	y_scale = y * 32 * game->scale;
-	if (game->sol_frame % 96  == 0 && game->sol_index < 3)
+	if (game->sol_frame % 96 == 0 && game->sol_index < 3)
 	{
 		game->sol_index++;
 	}
@@ -45,6 +45,14 @@ void	draw_exit(t_game *game)
 		x = 0;
 		y++;
 	}
+}
+
+void	draw_key(t_game *game)
+{
+	draw_touch(game, game->a[game->a_ind], (5), 50);
+	draw_touch(game, game->s[game->s_ind], (43), 50);
+	draw_touch(game, game->d[game->d_ind], (81), 50);
+	draw_touch(game, game->w[game->w_ind], (43), 10);
 }
 
 int	update(t_game *game)
