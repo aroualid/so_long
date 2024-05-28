@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:47:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 18:41:03 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:10:05 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,12 @@ void	generate_random_fruit(t_game *game, int index)
 int	load_exit(t_game *game)
 {
 	t_img	**ptr;
-	int		i;
 
-	i = 0;
 	ptr = malloc(sizeof(t_img **) * 4);
 	ptr[0] = load_sprite(game->mlx, "textures/traps1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/traps2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/traps3.xpm");
 	ptr[3] = load_sprite(game->mlx, "textures/traps4.xpm");
-	while (i < 4)
-	{
-		if (ptr[i] == NULL)
-			return (0);
-		i++;
-	}
 	game->sol = ptr;
 	return (1);
 }

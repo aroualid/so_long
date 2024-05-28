@@ -6,11 +6,12 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:01:01 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 14:01:27 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:08:26 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 void	draw_all(t_game *game)
 {
 	int	x;

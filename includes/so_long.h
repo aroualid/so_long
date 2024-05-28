@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 16:24:35 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:45:38 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ typedef struct s_game
 	int					a_ind;
 	int					s_ind;
 	int					d_ind;
+	int					check_load;
 }						t_game;
 
 t_img		*load_sprite(void *img, char *filename);
@@ -204,5 +205,5 @@ void		win_game(t_game *game);
 void		duck_wait(t_game *game);
 void		key_color(t_game *game);
 void		game_assets(t_game *game);
-
+void		check_load(t_game *game);
 #endif
