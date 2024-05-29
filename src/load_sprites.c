@@ -6,17 +6,29 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:47:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 19:10:05 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:05:16 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+int	load_tree(t_game *game)
+{
+	t_img	**ptr;
+
+	ptr = malloc(sizeof(t_img *) * 1);
+	ptr[0] = load_sprite(game->mlx, "textures/tree3.xpm");
+	game->tree = ptr;
+	if (ptr[0] == NULL)
+		return (0);
+	return (1);
+}
+
 int	load_mechant(t_game *game)
 {
 	t_img	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 4);
 	ptr[0] = load_sprite(game->mlx, "textures/mechant_1.xpm");
@@ -30,7 +42,7 @@ int	load_mechant(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	load_fruit(t_game *game)
@@ -45,18 +57,6 @@ int	load_fruit(t_game *game)
 	game->load_fruit[3] = load_strawberry(game);
 	game->load_fruit[4] = load_watermelon(game);
 	return (1);
-	
-}
-
-uint32_t	xorshift32(t_xorshift32_state *state)
-{
-	uint32_t	x;
-
-	x = state->a;
-	x ^= x << 13;
-	x ^= x >> 17;
-	x ^= x << 5;
-	return (state->a = x);
 }
 
 void	generate_random_fruit(t_game *game, int index)

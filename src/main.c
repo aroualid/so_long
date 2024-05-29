@@ -6,29 +6,12 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 20:30:02 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:09:05 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../pars/so_long_pars.h"
-
-void	check_load(t_game *game)
-{
-	if (load_fruit(game) == 0 
-		|| load_duck(game) == 0
-		|| load_duck_wait(game) == 0
-		|| load_duck_wait_reverse(game) == 0
-		|| load_duck_reverse(game) == 0 
-		|| load_exit(game) == 0
-		|| load_font_1(game) == 0 
-		|| load_num(game) == 0
-		|| load_touch(game) == 0
-		|| load_sprite(game->mlx, "textures/tree3.xpm") == 0)
-			game->check_load = 0;
-	else
-		game->check_load = 1;
-}
 
 void	load_game(t_game *game)
 {
@@ -40,26 +23,20 @@ void	load_game(t_game *game)
 	game->x = x;
 	game->y = y;
 	init_mlx_settings(game, x, y);
-	check_load(game);
 	game->player.x = game->pp_x * game->scale * 32;
 	game->player.y = game->pp_y * game->scale * 32;
 	game->last_key = 1;
 }
 
-int	load(t_game *game)
+int	check_main(t_game *game)
 {
-
-	load_fruit(game);
-	load_duck(game);
-	load_duck_wait(game);
-	load_duck_wait_reverse(game);
-	load_duck_reverse(game);
-	load_exit(game);
-	load_font_1(game);
-	load_num(game);
-	load_touch(game);
-	game->tree = load_sprite(game->mlx, "textures/tree3.xpm");
-	return (1);
+	free_map(game);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	return (ft_printf("%s\n", "INVALID SPRITE"));
 }
 
 int	main(int ac, char **av)
@@ -77,8 +54,7 @@ int	main(int ac, char **av)
 			return (ft_printf("%s\n", "INVALID MAP"));
 		load_game(&game);
 		if (game.check_load == 0)
-			return (ft_printf("%s\n", "INVALID SPRITE"));
-		load(&game);
+			return (check_main(&game));
 		random_p(&game);
 		mlx_loop_hook(game.mlx, update, &game);
 		mlx_hook(game.win, KeyPress, KeyPressMask, key_pressed, &game);

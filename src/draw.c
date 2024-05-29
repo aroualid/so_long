@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 18:12:58 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:56:40 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	draw_text(t_game *game, t_img *img, int x, int y)
 				|| i + x < 0 || i + x >= (4 * game->max_x * 32))
 				continue ;
 			color = ((int *)img->data)[(int)
-				(j / 4) * img->width + (int)(i / 4)];
+				(j / 4) *(img->width) + (int)(i / 4)];
 			if (color == 0xFF000000)
 				continue ;
 			((int *)game->screen->data)[(y + j)
@@ -54,7 +54,7 @@ void	draw_touch(t_game *game, t_img *img, int x, int y)
 				|| i + x < 0 || i + x >= (game->max_x * 32))
 				continue ;
 			color = ((int *)img->data)[(int)
-				(j) * img->width + (int)(i)];
+				(j) *(img->width) + (int)(i)];
 			if (color == 0xFF000000)
 				continue ;
 			((int *)game->screen->data)[(y + j)
@@ -63,4 +63,3 @@ void	draw_touch(t_game *game, t_img *img, int x, int y)
 		i++;
 	}
 }
-

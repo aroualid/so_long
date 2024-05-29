@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 15:08:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:58:58 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	update_player(t_game *game)
 		duck_wait(game);
 	if (game->key_space)
 		duck_space(game);
-	game_assets(game);	
+	game_assets(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);
 }

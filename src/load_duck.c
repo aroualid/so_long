@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:46:57 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 18:59:31 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:57:46 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	load_duck(t_game *game)
 {
 	t_img	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
 	if (!ptr)
@@ -35,15 +35,14 @@ int	load_duck(t_game *game)
 			return (0);
 		i++;
 	}
-
-	return(1);
+	return (1);
 }
 
 int	load_duck_reverse(t_game *game)
 {
 	t_img	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
 	ptr[0] = load_sprite(game->mlx, "textures/2_duck_1.xpm");
@@ -59,14 +58,14 @@ int	load_duck_reverse(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	load_duck_wait(t_game *game)
 {
 	t_img	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
 	ptr[0] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
@@ -82,14 +81,14 @@ int	load_duck_wait(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	load_duck_wait_reverse(t_game *game)
 {
 	t_img	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
 	ptr[0] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
@@ -105,5 +104,5 @@ int	load_duck_wait_reverse(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }

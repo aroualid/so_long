@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 20:25:35 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:07:50 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_game
 	char				**map;
 	char				**map_ok;
 	int					scale_calc;
-	t_img				*tree;
+	t_img				**tree;
 	int					sol_index;
 	t_img				**sol;
 	float				move_count;
@@ -206,4 +206,19 @@ void		duck_wait(t_game *game);
 void		key_color(t_game *game);
 void		game_assets(t_game *game);
 void		check_load(t_game *game);
+void		handle_load_fruit_failure(t_game *game);
+void		handle_load_duck_failure(t_game *game);
+void		handle_load_duck_wait_failure(t_game *game);
+void		handle_load_duck_wait_reverse_failure(t_game *game);
+void		handle_load_duck_reverse_failure(t_game *game);
+void		handle_load_exit_failure(t_game *game);
+void		handle_load_font_1_failure(t_game *game);
+void		handle_load_num_failure(t_game *game);
+void		handle_load_touch_failure(t_game *game);
+void		handle_load_tree_failure(t_game *game);
+void		handle_load_tree_failure(t_game *game);
+void		free_all_bonus(t_game *game);
+int			load_tree(t_game *game);
+void		handle_load_ennemy_failure(t_game *game);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:01:01 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 19:08:26 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:10:01 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_all(t_game *game)
 		{
 			if (game->map_ok[y][x] == 'V')
 				collectible_number++;
-			if (game->map[y][x] == 'X' || game->map[y][x] == '1' 
+			if (game->map[y][x] == 'X' || game->map[y][x] == '1'
 				|| game->map_ok[y][x] == '0')
 				draw_sol(game, y, x);
 			if (game->map_ok[y][x] == '1')

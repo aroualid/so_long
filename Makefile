@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/28 16:29:29 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/29 15:23:23 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -38,6 +38,8 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 	game_assets.c\
 	draw.c\
 	draw_all.c\
+	free_1.c\
+	free_2.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \
@@ -67,6 +69,8 @@ SRCS_BNS := $(addprefix $(SRCS_PATH), \
 	game_assets.c\
 	draw.c\
 	draw_all.c\
+	free_1.c\
+	free_2.c\
 )
 
 PARS_BNS := $(addprefix $(PARS_PATH), \
@@ -79,40 +83,41 @@ PARS_BNS := $(addprefix $(PARS_PATH), \
 	count_bonus.c\
 )
 
-OBJS = $(SRCS:%.c=%.o) $(PARS:%.c=%.o)
+OBJS_SRCS = $(SRCS:%.c=%.o)
+OBJS_PARS = $(PARS:%.c=%.o)
+OBJS_SRCS_BNS = $(SRCS_BNS:%.c=%.o)
+OBJS_PARS_BNS = $(PARS_BNS:%.c=%.o)
 
-OBJS_BNS = $(SRCS_BNS:%.c=%.o) $(PARS_BNS:%.c=%.o)
-
-.PHONY: all clean fclean re libft re ft_printf
+OBJS = $(OBJS_SRCS) $(OBJS_PARS)
+OBJS_BNS = $(OBJS_SRCS_BNS) $(OBJS_PARS_BNS)
 
 all: $(NAME) 
 
-$(NAME): $(OBJS) libft ft_printf minilibx
+$(NAME): $(OBJS) 
+	@$(RM) $(NAME_BNS)
+	@$(MAKE) -C $(LIBFT_PATH)
+	@$(MAKE) -C $(FT_PRINTF_PATH)
+	@$(MAKE) -C $(MINILIBX_PATH)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -Llibft -lft -Lft_printf -lftprintf -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
 
-bonus : $(OBJS_BNS) libft ft_printf minilibx
+bonus : $(OBJS_BNS) 
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_PATH)
+	@$(MAKE) -C $(FT_PRINTF_PATH)
+	@$(MAKE) -C $(MINILIBX_PATH)
 	$(CC) $(CFLAGS) -o $(NAME_BNS) $(OBJS_BNS) -Llibft -lft -Lft_printf -lftprintf -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
 
-libft:
-	@$(MAKE) -C $(LIBFT_PATH)
-
-ft_printf:
-	@$(MAKE) -C $(FT_PRINTF_PATH)
-
-minilibx: 
-	@$(MAKE) -C $(MINILIBX_PATH)
-
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(OBJS_BNS)
 	@cd $(LIBFT_PATH) && make clean
 	@cd $(FT_PRINTF_PATH) && make clean
 	@cd $(MINILIBX_PATH) && make clean
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(NAME_BNS)
 	@cd $(LIBFT_PATH) && make fclean
 	@cd $(FT_PRINTF_PATH) && make fclean
 
 re: fclean all
 
-
+.PHONY: all clean fclean libft re ft_printf minilibx

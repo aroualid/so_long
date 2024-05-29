@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:50:58 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 13:45:36 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:05:24 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ void	random_p(t_game *game)
 		generate_random_fruit(game, i);
 		i++;
 	}
+}
+
+uint32_t	xorshift32(t_xorshift32_state *state)
+{
+	uint32_t	x;
+
+	x = state->a;
+	x ^= x << 13;
+	x ^= x >> 17;
+	x ^= x << 5;
+	return (state->a = x);
 }
 
 void	free_sprite(t_img **ptr, int index, t_game *game)
@@ -66,24 +77,27 @@ void	free_fruit(t_game *game)
 	free(game->load_fruit);
 }
 
-void	free_all(t_game *game)
+void	check_load(t_game *game)
 {
-	free_sprite(game->sol, 4, game);
-	free_sprite(game->sprites_duck_wait_reverse, 6, game);
-	free_sprite(game->sprites_duck_wait, 6, game);
-	free_sprite(game->correct_sprites, 6, game);
-	free_sprite(game->reverse_sprites, 6, game);
-	free_sprite(game->font_1, 2, game);
-	free_sprite(game->num, 10, game);
-	free_fruit(game);
-	if (game->collectibles)
-	{
-		free(game->collectibles);
-		game->collectibles = NULL;
-	}
-	mlx_destroy_image(game->mlx, game->tree);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_image(game->mlx, game->screen);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
+	if (load_fruit(game) == 0)
+		return (handle_load_fruit_failure(game));
+	if (load_duck(game) == 0)
+		return (handle_load_duck_failure(game));
+	if (load_duck_wait(game) == 0)
+		return (handle_load_duck_wait_failure(game));
+	if (load_duck_wait_reverse(game) == 0)
+		return (handle_load_duck_wait_reverse_failure(game));
+	if (load_duck_reverse(game) == 0)
+		return (handle_load_duck_reverse_failure(game));
+	if (load_exit(game) == 0)
+		return (handle_load_exit_failure(game));
+	if (load_font_1(game) == 0)
+		return (handle_load_font_1_failure(game));
+	if (load_num(game) == 0)
+		return (handle_load_num_failure(game));
+	if (load_touch(game) == 0)
+		return (handle_load_touch_failure(game));
+	if (load_tree(game) == 0)
+		return (handle_load_tree_failure(game));
+	game->check_load = 1;
 }

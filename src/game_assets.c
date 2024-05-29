@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:09:00 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 15:09:10 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:37:32 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	game_assets(t_game *game)
 {
 	key_color(game);
-	ft_put_nbr_to_win(game, game->walk / 20, 0);
+	ft_put_nbr_to_win(game, game->walk / 40, 0);
 	collect_fruit(game);
 	win_game(game);
 }

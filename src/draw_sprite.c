@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:57:02 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 14:00:29 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:51:55 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	draw_wall(t_game *game, int y, int x)
 {
 	game->wall.x = x * game->scale * 32;
 	game->wall.y = y * game->scale * 32;
-	draw_sprite(game, game->tree, x * game->scale * 32, y * game->scale * 32);
+	draw_sprite(game, game->tree[0],
+		x * game->scale * 32, y * game->scale * 32);
 }
 
 bool	collide(t_wall *wall, int x, int y, t_game *game)

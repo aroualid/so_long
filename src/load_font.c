@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:23:19 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 19:40:48 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:59:10 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	load_font_1(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	load_num(t_game *game)
@@ -55,7 +55,7 @@ int	load_num(t_game *game)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 void	ft_put_nbr_to_win(t_game *game, int walk, int x)

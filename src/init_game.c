@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:49:55 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 20:30:43 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:57:28 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ int	init_mlx_settings(t_game *game, int x, int y)
 	if (!game->mlx)
 	{
 		ft_putstr_fd("Error\n❌the mlx pointer is NULL❌\n", 2);
+		return (-1);
+	}
+	check_load(game);
+	if (game->check_load == 0)
+	{
 		return (-1);
 	}
 	game->win = mlx_new_window(game->mlx, x, y, "so_long");
