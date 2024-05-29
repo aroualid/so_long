@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:47:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 23:55:56 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:09:03 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	load_tree(t_game *game)
 	t_img	**ptr;
 
 	ptr = malloc(sizeof(t_img *) * 1);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/tree3.xpm");
 	game->tree = ptr;
 	if (ptr[0] == NULL)
@@ -31,6 +33,8 @@ int	load_mechant(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 4);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/mechant_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/mechant_2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/mechant_3.xpm");
@@ -48,6 +52,8 @@ int	load_mechant(t_game *game)
 int	load_fruit(t_game *game)
 {
 	game->load_fruit = malloc(sizeof(t_img **) * 5);
+	if (!game->load_fruit)
+		return (0);
 	game->load_fruit[0] = load_apple(game);
 	game->load_fruit[1] = load_lemon(game);
 	game->load_fruit[2] = load_pear(game);
@@ -70,6 +76,8 @@ int	load_exit(t_game *game)
 	t_img	**ptr;
 
 	ptr = malloc(sizeof(t_img **) * 4);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/traps1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/traps2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/traps3.xpm");

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:17:24 by aroualid          #+#    #+#             */
-/*   Updated: 2024/01/12 15:05:02 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:14:39 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	*ft_read(int fd, char *buffer, char *str)
 	while (1)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes == -1)
+		if (bytes == -1 && !bytes)
 			return (free(str), NULL);
 		else if (bytes == 0)
 			return (buffer[0] = '\0', str);
@@ -121,9 +121,10 @@ char	*get_next_line(int fd)
 	}
 	else
 		line = ft_calloc(1, 1);
-	line = ft_read(fd, buffer, line);
 	if (!line)
 		return (NULL);
+	line = ft_read(fd, buffer, line);
+
 	if (*line == '\0')
 		return (free(line), NULL);
 	return (line);

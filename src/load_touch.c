@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 11:32:39 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 18:23:21 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:09:29 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	load_d(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 2);
+	if (!ptr)
+		return (0);
 	ptr[1] = load_sprite(game->mlx, "textures/d_light.xpm");
 	ptr[0] = load_sprite(game->mlx, "textures/d_dark.xpm");
 	while (i < 2)
@@ -38,6 +40,8 @@ int	load_a(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 2);
+	if (!ptr)
+		return (0);
 	ptr[1] = load_sprite(game->mlx, "textures/a_light.xpm");
 	ptr[0] = load_sprite(game->mlx, "textures/a_dark.xpm");
 	while (i < 2)
@@ -57,6 +61,8 @@ int	load_w(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 2);
+	if (!ptr)
+		return (0);
 	ptr[1] = load_sprite(game->mlx, "textures/w_light.xpm");
 	ptr[0] = load_sprite(game->mlx, "textures/w_dark.xpm");
 	while (i < 2)
@@ -76,6 +82,8 @@ int	load_s(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 2);
+	if (!ptr)
+		return (0);
 	ptr[1] = load_sprite(game->mlx, "textures/s_light.xpm");
 	ptr[0] = load_sprite(game->mlx, "textures/s_dark.xpm");
 	while (i < 2)

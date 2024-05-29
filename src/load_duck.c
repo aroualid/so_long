@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:46:57 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 15:57:46 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:06:55 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	load_duck_reverse(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/2_duck_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/2_duck_2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/2_duck_3.xpm");
@@ -68,6 +70,8 @@ int	load_duck_wait(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/duck_wait_2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/duck_wait_1.xpm");
@@ -91,6 +95,8 @@ int	load_duck_wait_reverse(t_game *game)
 
 	i = 0;
 	ptr = malloc(sizeof(t_img *) * 6);
+	if (!ptr)
+		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
 	ptr[1] = load_sprite(game->mlx, "textures/2_duck_wait_2.xpm");
 	ptr[2] = load_sprite(game->mlx, "textures/2_duck_wait_1.xpm");
