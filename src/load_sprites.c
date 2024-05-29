@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:47:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 16:05:16 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 23:55:56 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ int	load_mechant(t_game *game)
 
 int	load_fruit(t_game *game)
 {
-	int	i;
-
-	i = 0;
 	game->load_fruit = malloc(sizeof(t_img **) * 5);
 	game->load_fruit[0] = load_apple(game);
 	game->load_fruit[1] = load_lemon(game);
@@ -62,9 +59,7 @@ int	load_fruit(t_game *game)
 void	generate_random_fruit(t_game *game, int index)
 {
 	uint32_t	random;
-	uint32_t	i;
 
-	i = 5;
 	random = xorshift32(&game->rand) % 5;
 	game->collectibles[index].sprite_index = 0;
 	game->collectibles[index].fruit_sprites = game->load_fruit[random];

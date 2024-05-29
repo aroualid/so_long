@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:54:15 by aroualid          #+#    #+#             */
-/*   Updated: 2023/12/26 15:34:52 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/29 23:57:01 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int	ft_putnbr_base(unsigned int nb, char *base)
+int	ft_putnbr_base(int nb, char *base)
 {
 	long long		i;
 	char			result [100];
@@ -47,7 +47,7 @@ int	ft_putnbr_base(unsigned int nb, char *base)
 	return (len);
 }
 
-int	ft_putnbr_basep(unsigned long nb, char *base)
+int	ft_putnbr_basep(long nb, char *base)
 {
 	long long		i;
 	char			result [100];
