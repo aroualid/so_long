@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:40 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 11:50:37 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 13:44:48 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ typedef struct s_ennemy
 
 typedef struct s_game
 {
+	int					i;
+	int					j;
+	int					k;
 	int					x;
 	int					y;
 	int					col_x;

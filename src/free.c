@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:23:43 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 15:59:48 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:03:17 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	free_map(t_game *game)
 	}
 	free(game->map);
 	free(game->map_ok);
+	close(game->i);
+	close(game->k);
 }
 
 void	free_all(t_game *game)
