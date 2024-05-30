@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:58:59 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 14:05:39 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:29:14 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	get_len_line(char *file, t_game *game)
 	first_res = 0;
 	res = 0;
 	i = get_line(file, game);
+	if (i < 1)
+		return (0);
 	ptr = get_each_line(file, game);
 	first_res = ft_strlen(ptr[0]) - 1;
 	j = 1;
@@ -96,7 +98,7 @@ int	get_len_line(char *file, t_game *game)
 		if (res == first_res)
 			j++;
 		else
-			return (0);
+			return (free__map(ptr, game), 0);
 	}
 	game->max_x = res;
 	free__map(ptr, game);

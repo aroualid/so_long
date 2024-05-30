@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:23:19 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 00:07:16 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:07:52 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	load_font_1(t_game *game)
 	int		i;
 
 	i = 0;
-	ptr = calloc(sizeof(t_img *), 2);
+	ptr = ft_calloc(sizeof(t_img *), 2);
 	if (!ptr)
 		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/test.xpm");
@@ -39,7 +39,7 @@ int	load_num(t_game *game)
 	int		i;
 
 	i = 0;
-	ptr = calloc(sizeof(t_img *), 10);
+	ptr = ft_calloc(sizeof(t_img *), 10);
 	if (!ptr)
 		return (0);
 	ptr[0] = load_sprite(game->mlx, "textures/0.xpm");

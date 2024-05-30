@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 13:54:23 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:24:07 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	player_key_w(t_game *game)
 	if (wall_col(game, game->player.x, game->player.y - game->scale))
 		return ;
 	else if (wall_col(game, game->player.x,
-			game->player.y - (game->scale * (5 - game->scale))))
+			game->player.y - (game->scale * (unsigned int)(5 - game->scale))))
 		return ;
 	if (game->last_key == 1)
 		game->sprites = game->correct_sprites;
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.y -= game->scale * (5 - game->scale);
+		game->player.y -= game->scale * (unsigned int)(5 - game->scale);
 	else
 		game->player.y -= game->scale;
 	if (game->key_w == 1 && game->key_s != 1)
@@ -38,14 +38,14 @@ void	player_key_s(t_game *game)
 	if (wall_col(game, game->player.x, game->player.y + game->scale))
 		return ;
 	else if (wall_col(game, game->player.x,
-			game->player.y + game->scale * (5 - game->scale)))
+			game->player.y + game->scale * (unsigned int)(5 - game->scale)))
 		return ;
 	if (game->last_key == 1)
 		game->sprites = game->correct_sprites;
 	else if (game->last_key == 2)
 		game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.y += game->scale * (5 - game->scale);
+		game->player.y += game->scale * (unsigned int)(5 - game->scale);
 	else
 		game->player.y += game->scale;
 	if (game->key_s == 1 && game->key_w != 1)
@@ -57,12 +57,13 @@ void	player_key_a(t_game *game)
 	detect_key(game);
 	if (wall_col(game, game->player.x - game->scale, game->player.y))
 		return ;
-	else if (wall_col(game, game->player.x - game->scale * (5 - game->scale),
+	else if (wall_col(game,
+			game->player.x - game->scale * (unsigned int)(5 - game->scale),
 			game->player.y))
 		return ;
 	game->sprites = game->reverse_sprites;
 	if (game->key_space)
-		game->player.x -= game->scale * (5 - game->scale);
+		game->player.x -= game->scale * (unsigned int)(5 - game->scale);
 	else
 		game->player.x -= game->scale;
 	if (game->key_a == 1 && game->key_d != 1)
@@ -74,12 +75,13 @@ void	player_key_d(t_game *game)
 	detect_key(game);
 	if (wall_col(game, game->player.x + game->scale, game->player.y))
 		return ;
-	else if (wall_col(game, game->player.x + game->scale * (5 - game->scale),
+	else if (wall_col(game,
+			game->player.x + game->scale * (unsigned int)(5 - game->scale),
 			game->player.y))
 		return ;
 	game->sprites = game->correct_sprites;
 	if (game->key_space)
-		game->player.x += game->scale * (5 - game->scale);
+		game->player.x += game->scale * (unsigned int)(5 - game->scale);
 	else
 		game->player.x += game->scale;
 	if (game->key_d == 1 && game->key_a != 1)

@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:34:32 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 14:02:59 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:49:30 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,13 @@ int	check_file(char *av2, t_game *game)
 		game->j = open(av2, O_DIRECTORY);
 		if (game->i != -1 && game->j == -1)
 			return (1);
-
 		else
+		{
 			return (0);
+		}
 	}
 	else
-		return (0);
+		return (2);
 }
 
 int	pars(int ac, char **av, t_game *game)
@@ -109,19 +110,19 @@ int	pars(int ac, char **av, t_game *game)
 	{
 		game->k = check_file(av[1], game);
 		if (game->k == 0)
-			return (ft_putstr_fd("ERROR\n", 2), 0);
+			return (ft_putstr_fd("ERROR1\n", 2), 0);
 		else if (game->k == 1
-			&& get_len_line(av[1], game) != 0
+			&& get_len_line(av[1], game) == 1
 			&& count_element(game->map, game) == 1)
 		{
 			flood_fill(game, game->pp_x, game->pp_y, av[1]);
 			if (count_element_ff(game->map, game) == 0)
-				return (ft_putstr_fd("ERROR\n", 2), 0);
+				return (ft_putstr_fd("ERROR2\n", 2), 0);
 		}
 		else
-			return (ft_putstr_fd("ERROR\n", 2), 0);
+			return (ft_putstr_fd("ERROR3\n", 2), 0);
 	}
 	else
-		return (ft_putstr_fd("ERROR\n", 2), 0);
+		return (ft_putstr_fd("ERROR4\n", 2), 0);
 	return (1);
 }

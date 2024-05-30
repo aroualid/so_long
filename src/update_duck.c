@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 11:36:35 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:44:07 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	update_player(t_game *game)
 	game->nb_frames++;
 	detect_key(game);
 	draw_all(game);
+	game_assets(game);
 	if (game->key_w || game->key_s || game->key_d || game->key_a)
 		walk_animation(game);
 	if (game->key_w && play->y >= 0)
@@ -95,6 +96,5 @@ void	update_player(t_game *game)
 		duck_wait(game);
 	if (game->key_space)
 		duck_space(game);
-	game_assets(game);
 	draw_sprite(game, game->sprites[game->sprite_index], play->x, play->y);
 }

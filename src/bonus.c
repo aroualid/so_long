@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 14:47:03 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 11:45:58 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:20:14 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int ac, char **av)
 			game.scale = 1080 / (game.max_y * 32);
 		else
 			game.scale = 1920 / (game.max_x * 32);
-		if (game.max_y > 30 || game.max_x >= 60 || game.scale >= 5)
+		if (game.max_y > 30 || game.max_x >= 60)
 			return (ft_putstr_fd("INVALID MAP\n", 2), 0);
 		load_game_bonus(&game);
 		if (game.check_load == 0)
