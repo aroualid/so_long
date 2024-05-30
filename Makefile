@@ -6,7 +6,7 @@
 #    By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:01:05 by aroualid          #+#    #+#              #
-#    Updated: 2024/05/29 15:23:23 by aroualid         ###   ########.fr        #
+#    Updated: 2024/05/30 11:06:01 by aroualid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -40,6 +40,7 @@ SRCS :=	$(addprefix $(SRCS_PATH), \
 	draw_all.c\
 	free_1.c\
 	free_2.c\
+	end_message.c\
 )
 
 PARS := $(addprefix $(PARS_PATH), \
@@ -71,6 +72,7 @@ SRCS_BNS := $(addprefix $(SRCS_PATH), \
 	draw_all.c\
 	free_1.c\
 	free_2.c\
+	end_message.c\
 )
 
 PARS_BNS := $(addprefix $(PARS_PATH), \
@@ -92,6 +94,7 @@ OBJS = $(OBJS_SRCS) $(OBJS_PARS)
 OBJS_BNS = $(OBJS_SRCS_BNS) $(OBJS_PARS_BNS)
 
 all: $(NAME) 
+bonus: $(NAME_BNS)
 
 $(NAME): $(OBJS) 
 	@$(RM) $(NAME_BNS)
@@ -100,7 +103,7 @@ $(NAME): $(OBJS)
 	@$(MAKE) -C $(MINILIBX_PATH)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -Llibft -lft -Lft_printf -lftprintf -Lminilibx-linux  -lmlx_Linux -lmlx -lX11 -lXext -lm
 
-bonus : $(OBJS_BNS) 
+$(NAME_BNS): $(OBJS_BNS) 
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH)
 	@$(MAKE) -C $(FT_PRINTF_PATH)
@@ -120,4 +123,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean libft re ft_printf minilibx
+.PHONY: all clean fclean re bonus

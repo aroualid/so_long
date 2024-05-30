@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:17:24 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 00:14:39 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:50:27 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	line = ft_read(fd, buffer, line);
-
 	if (*line == '\0')
 		return (free(line), NULL);
 	return (line);

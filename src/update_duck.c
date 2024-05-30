@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:24:54 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 15:58:58 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:36:35 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	win_game(t_game *game)
 	if (game->map_ok[y_ex / scale][x_ex / scale] == 'E')
 	{
 		if (game->col_num == 0 && game->sol_index >= 3)
-			mlx_loop_end(game->mlx);
+			end_win(game);
 	}
 }
 

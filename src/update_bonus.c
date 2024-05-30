@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 11:28:35 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/28 14:31:42 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 10:48:36 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	update_ennemy(t_game *game)
 	}
 	draw_enemy(game);
 	if (collide_ennemy(game) == true)
-		mlx_loop_end(game->mlx);
+		end_die(game);
 }

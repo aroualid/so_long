@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:23:05 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/29 16:09:05 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:48:19 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_main(t_game *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
-	return (ft_printf("%s\n", "INVALID SPRITE"));
+	return (ft_putstr_fd("INVALID SPRITE\n", 2), 0);
 }
 
 int	main(int ac, char **av)
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 		else
 			game.scale = 1920 / (game.max_x * 32);
 		if (game.max_y > 30 || game.max_x >= 60 || game.scale >= 5)
-			return (ft_printf("%s\n", "INVALID MAP"));
+			return (ft_putstr_fd("INVALID MAP\n", 2), 0);
 		load_game(&game);
 		if (game.check_load == 0)
 			return (check_main(&game));
