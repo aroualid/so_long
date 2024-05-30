@@ -6,7 +6,7 @@
 /*   By: aroualid <aroualid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:48:17 by aroualid          #+#    #+#             */
-/*   Updated: 2024/05/30 14:24:07 by aroualid         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:46:39 by aroualid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	player_key_a(t_game *game)
 		return ;
 	else if (wall_col(game,
 			game->player.x - game->scale * (unsigned int)(5 - game->scale),
-			game->player.y))
+		game->player.y))
 		return ;
 	game->sprites = game->reverse_sprites;
 	if (game->key_space)
@@ -77,7 +77,7 @@ void	player_key_d(t_game *game)
 		return ;
 	else if (wall_col(game,
 			game->player.x + game->scale * (unsigned int)(5 - game->scale),
-			game->player.y))
+		game->player.y))
 		return ;
 	game->sprites = game->correct_sprites;
 	if (game->key_space)
